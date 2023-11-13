@@ -66,6 +66,10 @@ public class ArrayOperations {
 
         int[] arr = {1,2,3,4,5}; // declaring and initializing an array with values instead of size
         printArray(arr);
+        System.out.println();
+        int[] oddArray = removeEven(arr);
+        printArray(oddArray);
+
     }
 
     // function to print elements in an array
@@ -74,5 +78,26 @@ public class ArrayOperations {
         for(int i = 0; i < n; i++) {
             System.out.println(arr[i]);
         }
+    }
+
+    // function to remove even integers from an array
+    public static int[] removeEven(int[] arr){
+        int oddCount = 0;
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i]%2 != 0){
+                oddCount++;
+            }
+        }
+
+        int[] result = new int[oddCount];
+        int index = 0;
+        for(int i = 0; i < arr.length; i++) {
+            if(arr[i]%2 != 0) {
+                result[index] = arr[i];
+                index++;
+            }
+        }
+
+        return result;
     }
 }
