@@ -39,7 +39,7 @@ public class Big0Notation {
      * time complexity became n because ==> we dropped lower order terms (7), we dropped constant multipliers (10)
      * ultimately the time complexity taken by the above mentioned function is O(n)
      * 
-     * NOTE: execution time is directly proportional to the input size.
+     * NOTE: execution time is directly proportional to the input size n.
      * 
      **********************************************************************************************************************************************************************/
 
@@ -51,6 +51,8 @@ public class Big0Notation {
      * 5 + 11n + 9n^2 is the time taken by a function to execute.
      * time complexity becomes n^2 because ==> we drop lower orders (5, 11n), we removed constant multiplier (9)
      * ultimately the time complexity of an above mentioned function is O(n^2)
+     * 
+     * NOTE: execution time will increase n^2 times the number of input size n.
      * 
      **********************************************************************************************************************************************************************/
     
@@ -100,7 +102,7 @@ public class Big0Notation {
                                 // 4n is the unit time taken by the above line
         }
     
-        return sum;    // accessing value of sum, retuns the value of sum ==> hence it performs 1 + 1 operation ===> it takes 2 unit time
+        return sum;             // accessing value of sum, retuns the value of sum ==> hence it performs 1 + 1 operation ===> it takes 2 unit time
 
         /******************************************************************************************************************************************************************
          *
@@ -114,7 +116,7 @@ public class Big0Notation {
 
 
     public void printPolynomialAlgorithm(int n) {
-        for(int i = 1; i <= n; i++) {                               // 1 + 3(n+1) + 3n number of operations and 4 + 6n unit time
+        for(int i = 1; i <= n; i++) {                               // 1 + 3(n+1) + 3n number of operations and 4 + 6n unit time (refer above function for explanation of calc)
             for(int j = 0; j <= n; j++) {                           // n(1 + 3(n+1) + 3n) number of operations and 6n^2 + 4n unit time
                 System.out.println("i = " + i + ", j = " + j);      // access i n^2 times, access j n^2 times, print it n^2 times ==> n^2(1 + 1 + 1) ops and 3n^2 unit time
             }
