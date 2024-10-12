@@ -49,12 +49,36 @@ public class ArrayDType {
         System.out.println(min);
 
 
-        int secondMinimum = demo.findSecondMinimum(myArray5);
-        System.out.println(secondMinimum);
-
 
         int secondMaximum = demo.findSecondMaximum(myArray5);
         System.out.println(secondMaximum);
+
+
+        int[] myArray6 = {1,0,5,0,19,3,45,6,0};
+        int[] zeroLastResult = demo.moveZeroLast(myArray6);
+        demo.printArray(zeroLastResult);
+
+        
+        // resizing array to handle more elements as part of it.
+        int[] myArray7 = {1,2,3,4,5,6,7};
+        demo.printArray(myArray7);
+        System.out.println(myArray7.length);
+        // myArray7[8] = 8;
+        myArray7 = demo.resizeArray(myArray7, 8);
+        System.out.println(myArray7.length);
+        myArray7[7] = 8;
+        demo.printArray(myArray7);
+
+
+        // find missing element from an array
+        int[] myArray8 = {1,2,3,5,6,7,8};
+        System.out.println(demo.findMissingElement(myArray8));
+
+
+        // finding whether if the given string is palindrome or not
+        Boolean isStringPalindrome = demo.isPalindrome("madam");
+        System.out.println(isStringPalindrome);
+
     }
 
     public void printArray(int[] arr){
@@ -111,43 +135,76 @@ public class ArrayDType {
     }
 
 
-    public int findSecondMinimum(int[] arr){
-        if(arr == null || arr.length <= 0){
-            throw new IllegalArgumentException("Invalid Input");
-        }
-
-        int minimum = arr[0];
-        int secondMinimum = arr[0];
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] < minimum) {
-                secondMinimum = minimum;
-                minimum = arr[i];
-            }
-        }
-
-        return secondMinimum;
-    }
-
-
     public int findSecondMaximum(int[] arr){
         if(arr == null || arr.length <= 0){
             throw new IllegalArgumentException("Invalid Input");
         }
 
-        int maximum = arr[0];
-        int secondMaximum = arr[0];
+       int max = Integer.MIN_VALUE;
+       int secondMax = Integer.MIN_VALUE;
+       for (int index = 0; index < arr.length; index++) {
+            if(arr[index] > max) {
+                secondMax = max;
+                max = arr[index];
+            } else if(arr[index] > secondMax && arr[index] != max) {
+                secondMax = arr[index];
+            }
+       }
+
+       return secondMax;
+    }
+
+
+    public int[] moveZeroLast(int[] arr){
+        int[] tempArray = new int[arr.length];
+        int tempReference = 0;
         for (int i = 0; i < arr.length; i++) {
-            System.out.println();
-            System.out.println(maximum);
-            System.out.println(secondMaximum);
-            System.out.println();
-            if (arr[i] > maximum) {
-                secondMaximum = maximum;
-                maximum = arr[i];
+            if(arr[i] != 0) {
+                tempArray[tempReference] = arr[i];
+                tempReference++;
             }
         }
 
-        return secondMaximum;
+        return tempArray;
+    }
+
+
+    public int[] resizeArray(int[] arr, int capacity){
+        int[] resizedArr = new int[capacity];
+        for (int i = 0; i < arr.length; i++) {
+            resizedArr[i] = arr[i];
+        }
+        arr = resizedArr;
+        return arr;
+    }
+
+
+    public int findMissingElement(int[] arr){
+        int n = arr.length + 1; // since one missing element will be there, adding 1 to length
+        int sum = (n * (n+1))/2;
+        for (int num : arr) {
+            sum -= num;
+        }
+        return sum;
+
+    }
+
+
+    public Boolean isPalindrome(String word){
+        char[] charArray = word.toCharArray();
+        int start = 0;
+        int end = charArray.length - 1;
+        for (int i = 0; i < charArray.length; i++) {
+            if(start < end){
+                if(charArray[start] != charArray[end]) {
+                    return false;
+                }
+                start++;
+                end--;
+            }
+        }
+
+        return true;
     }
 
 }
