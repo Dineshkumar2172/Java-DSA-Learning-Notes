@@ -41,6 +41,9 @@ public class SinglyLinkedList {
         sll.printElements(sll.head);
         sll.head = sll.deleteLastNode(sll.head);
         sll.printElements(sll.head);
+        sll.head = sll.deletePosition(sll.head, 5);
+        sll.printElements(sll.head);
+
     }
 
 
@@ -180,7 +183,7 @@ public class SinglyLinkedList {
             currentNode = currentNode.next;
             currentPosition++;
         }
-        
+
         return head;
     }
 
