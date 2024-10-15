@@ -53,7 +53,18 @@ public class SinglyLinkedList {
         ListNode result = sll.findLastNthNode(sll.head, 2);
         System.out.println(result.data);
 
+        sll.head = sll.deletePosition(sll.head, 3);
+        sll.head = sll.reverseLinkedList(sll.head);
+        sll.head = sll.insertEnd(sll.head, 5);
+        sll.head = sll.insertEnd(sll.head, 6);
+        sll.head = sll.insertEnd(sll.head, 7);
+        sll.head = sll.insertEnd(sll.head, 7);
+        sll.head = sll.insertEnd(sll.head, 8);
+        sll.head = sll.insertEnd(sll.head, 9);
 
+        sll.printElements(sll.head);
+        sll.removeDuplicates(sll.head);
+        sll.printElements(sll.head);
     }
 
 
@@ -246,6 +257,15 @@ public class SinglyLinkedList {
         return referenceNode;
     }
 
-
     
+    public void removeDuplicates(ListNode head){
+        ListNode currentNode = head;
+        while (currentNode != null && currentNode.next != null) {
+            if (currentNode.data == currentNode.next.data) {
+                currentNode.next = currentNode.next.next;
+            }
+            currentNode = currentNode.next;
+        }
+    }
+
 }
