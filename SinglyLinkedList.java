@@ -307,4 +307,26 @@ public class SinglyLinkedList {
             currentNode =  currentNode.next;
         }
     }
+
+
+    // function to check if linkedlist contains loop or not..
+    // i.e. final node will be pointing to some other nodes somwhere in the middle instead of null
+    // this above scenario make us go in neve ending loop while traversing through linkedlist since
+    // there's no null to stop the traversal.
+    public boolean doesContainLoop(ListNode head){
+        ListNode fastPointer = head;
+        ListNode slowPointer = head;
+        // if the fast pointer meets null, then there are no loop in the given linkedlist
+        while (fastPointer != null && slowPointer != null) {
+            fastPointer = fastPointer.next.next;
+            slowPointer = slowPointer.next;
+            // since faster pointer moves faster than slow pointer, it should meet null incase
+            // if there are no loop in the linkedlist. Else it'll meet with the slow pointer at
+            // some point since it'll move in loop along with slow pointer.
+            if (fastPointer == slowPointer) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
