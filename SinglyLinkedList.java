@@ -68,6 +68,10 @@ public class SinglyLinkedList {
 
         sll.insertNodeSorted(sll.head, 4);
         sll.printElements(sll.head);
+        
+
+        sll.deleteKey(sll.head, 5);
+        sll.printElements(sll.head);
     }
 
 
@@ -286,5 +290,21 @@ public class SinglyLinkedList {
 
         newNode.next = currentNode;
         temp.next = newNode;
+    }
+
+
+    // method that deletes node based on key (data) input from the user
+    public void deleteKey(ListNode head, Integer data){
+        ListNode currentNode = head;
+        ListNode temp = null;
+        while (currentNode != null) {
+            if (currentNode.data == data) {
+                temp.next = currentNode.next;
+                return;
+            }
+
+            temp = currentNode;
+            currentNode =  currentNode.next;
+        }
     }
 }
