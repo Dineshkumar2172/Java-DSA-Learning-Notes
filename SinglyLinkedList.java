@@ -218,7 +218,8 @@ public class SinglyLinkedList {
             currentNode.next = previousNode;
             previousNode = currentNode;
             currentNode = nextNode;
-
+        }
+        
         return previousNode;
     }
 
