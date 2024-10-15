@@ -219,21 +219,6 @@ public class SinglyLinkedList {
             previousNode = currentNode;
             currentNode = nextNode;
         }
-        
-        return previousNode;
-    }
-
-
-    public ListNode reverseLinkedListManual(ListNode head){
-        ListNode currentNode = head;
-        ListNode previousNode = null;
-        ListNode nextNode = null;
-        while (currentNode != null) {
-            nextNode = currentNode.next;
-            currentNode.next = previousNode;
-            previousNode = currentNode;
-            currentNode = nextNode;
-        }
 
         return previousNode;
     }
