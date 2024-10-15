@@ -49,6 +49,11 @@ public class SinglyLinkedList {
 
         sll.head = sll.reverseLinkedList(sll.head);
         sll.printElements(sll.head);
+
+        ListNode result = sll.findLastNthNode(sll.head, 2);
+        System.out.println(result.data);
+
+
     }
 
 
@@ -222,4 +227,25 @@ public class SinglyLinkedList {
 
         return previousNode;
     }
+
+
+    public ListNode findLastNthNode(ListNode head, Integer n){
+        ListNode currentNode = head;
+        ListNode referenceNode = head;
+        Integer currentIndex = 0;
+        Integer referenceInteger = 0;
+        while (currentNode.next != null) {
+            currentNode = currentNode.next;
+            currentIndex++;
+            if (currentIndex >= n) {
+                referenceNode = referenceNode.next;
+                referenceInteger++;
+            }
+        }
+
+        return referenceNode;
+    }
+
+
+    
 }
