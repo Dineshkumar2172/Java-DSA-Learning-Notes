@@ -65,6 +65,9 @@ public class SinglyLinkedList {
         sll.printElements(sll.head);
         sll.removeDuplicates(sll.head);
         sll.printElements(sll.head);
+
+        sll.insertNodeSorted(sll.head, 4);
+        sll.printElements(sll.head);
     }
 
 
@@ -257,7 +260,9 @@ public class SinglyLinkedList {
         return referenceNode;
     }
 
-    
+
+    // limitation1 - this works only for sorted linked list
+    // limitation2 - this doesn't handle if there are more than two duplicates
     public void removeDuplicates(ListNode head){
         ListNode currentNode = head;
         while (currentNode != null && currentNode.next != null) {
@@ -268,4 +273,18 @@ public class SinglyLinkedList {
         }
     }
 
+
+    // method to insert a node in sorted linked list
+    public void insertNodeSorted(ListNode head, Integer data){
+        ListNode newNode = new ListNode(data);
+        ListNode currentNode = head;
+        ListNode temp = null;
+        while (currentNode != null && currentNode.data < data) {
+            temp = currentNode;
+            currentNode = currentNode.next;
+        }
+
+        newNode.next = currentNode;
+        temp.next = newNode;
+    }
 }
