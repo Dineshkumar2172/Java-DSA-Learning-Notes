@@ -44,6 +44,11 @@ public class SinglyLinkedList {
         sll.head = sll.deletePosition(sll.head, 5);
         sll.printElements(sll.head);
 
+        sll.searchElement(sll.head, 30);
+        sll.searchElement(sll.head, 100);
+
+        sll.head = sll.reverseLinkedList(sll.head);
+        sll.printElements(sll.head);
     }
 
 
@@ -187,4 +192,48 @@ public class SinglyLinkedList {
         return head;
     }
 
+
+    public Integer searchElement(ListNode head, Integer searchInteger){
+        ListNode currentNode = head;
+        Integer locationIndex = 1;
+        while (currentNode != null) {
+            if (currentNode.data == searchInteger) {
+                System.out.println("Search element " + searchInteger + " is found at position " + locationIndex);
+                return currentNode.data;
+            }
+            currentNode = currentNode.next;
+            locationIndex++;
+        }
+        System.out.println("Element " + searchInteger + " not found in the given linked list");
+        return 0;
+    }
+
+
+    public ListNode reverseLinkedList(ListNode head){
+        ListNode currentNode = head;
+        ListNode previousNode = null;
+        ListNode nextNode = null;
+        while (currentNode != null) {
+            nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+
+        return previousNode;
+    }
+
+
+    public ListNode reverseLinkedListManual(ListNode head){
+        ListNode currentNode = head;
+        ListNode previousNode = null;
+        ListNode nextNode = null;
+        while (currentNode != null) {
+            nextNode = currentNode.next;
+            currentNode.next = previousNode;
+            previousNode = currentNode;
+            currentNode = nextNode;
+        }
+
+        return previousNode;
+    }
 }
