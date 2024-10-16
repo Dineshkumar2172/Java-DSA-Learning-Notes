@@ -309,7 +309,7 @@ public class SinglyLinkedList {
     }
 
 
-    // function to check if linkedlist contains loop or not..
+    // function to check if linkedlist contains loop or not.. - this algo is known as floyd cycle detection algorithm
     // i.e. final node will be pointing to some other nodes somwhere in the middle instead of null
     // this above scenario make us go in neve ending loop while traversing through linkedlist since
     // there's no null to stop the traversal.
@@ -328,5 +328,36 @@ public class SinglyLinkedList {
             }
         }
         return false;
+    }
+
+
+    // find start of loop in a singly linked list
+    public Integer findLoopStartingNode(ListNode head){
+        ListNode slowPointer = head;
+        ListNode fastPointer = head;
+        while (slowPointer != null && fastPointer != null) {
+            slowPointer = slowPointer.next;
+            fastPointer = fastPointer.next.next;
+            if (slowPointer == fastPointer) {
+                // if slowpointer and fastpointer meets, then there is loop
+                // since there's a loop, then we are proceeding with finding
+                // the strating point of a loop by keeping slow and fast pointer
+                // meeting point as a reference starting point based on floyd cycle detection algorithm
+                return getStartingNode(head, slowPointer).data;
+            }
+        }
+
+        return null;
+    }
+
+
+    public ListNode getStartingNode(ListNode head, ListNode slowPointer){
+        ListNode temp = head;
+        while (slowPointer != temp) {
+            slowPointer = slowPointer.next;
+            temp = temp.next;
+        }
+
+        return temp;
     }
 }
