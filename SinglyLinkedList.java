@@ -95,6 +95,8 @@ public class SinglyLinkedList {
         System.out.println(sll.doesContainLoop(head1)); // checking if our linkedlist contains loop
         Integer loopStart = sll.findLoopStartingNode(head1); // finding starting point of the linkedlist loop
         System.out.println(loopStart);
+        sll.removeLoop(head1);
+        sll.printElements(head1);
     }
 
 
@@ -376,7 +378,7 @@ public class SinglyLinkedList {
     }
 
 
-    public ListNode getStartingNode(ListNode head, ListNode slowPointer){
+    private ListNode getStartingNode(ListNode head, ListNode slowPointer){
         ListNode temp = head;
         while (slowPointer != temp) {
             slowPointer = slowPointer.next;
@@ -385,4 +387,35 @@ public class SinglyLinkedList {
 
         return temp;
     }
+
+    /*
+     * Why Floyd's cycle detection algorithm works? - https://youtu.be/2ZLl8GAk1X4?t=28698
+     */
+
+
+    // deleting loop from the given linkedlist
+    public void removeLoop(ListNode head){
+        ListNode fastPointer = head;
+        ListNode slowPointer = head;
+
+        while (fastPointer != null && fastPointer.next != null) {
+            fastPointer = fastPointer.next.next;
+            slowPointer = slowPointer.next;
+            if (fastPointer == slowPointer) {
+                performRemoveLoop(head, slowPointer);
+                return;
+            }
+        }
+    }
+
+
+    private void performRemoveLoop(ListNode head, ListNode slowPointer){
+        ListNode temp = head;
+        while (temp.next != slowPointer.next) {
+            temp = temp.next;
+            slowPointer.next = slowPointer.next;
+        }
+        slowPointer.next = null;
+    }
+    
 }
