@@ -72,6 +72,29 @@ public class SinglyLinkedList {
 
         sll.deleteKey(sll.head, 5);
         sll.printElements(sll.head);
+
+
+
+        // creating a loop for testing loop methods
+        ListNode first1 = new ListNode(1);
+        ListNode second1 = new ListNode(2);
+        ListNode third1 = new ListNode(3);
+        ListNode fourth1 = new ListNode(4);
+        ListNode fifth1 = new ListNode(5);
+        ListNode sixth1 = new ListNode(6);
+
+        ListNode head1 = first1;
+        first1.next = second1;
+        second1.next = third1;
+        third1.next = fourth1;
+        fourth1.next = fifth1;
+        fifth1.next = sixth1;
+        sixth1.next = third1;
+
+
+        System.out.println(sll.doesContainLoop(head1)); // checking if our linkedlist contains loop
+        Integer loopStart = sll.findLoopStartingNode(head1); // finding starting point of the linkedlist loop
+        System.out.println(loopStart);
     }
 
 
@@ -343,6 +366,8 @@ public class SinglyLinkedList {
                 // since there's a loop, then we are proceeding with finding
                 // the strating point of a loop by keeping slow and fast pointer
                 // meeting point as a reference starting point based on floyd cycle detection algorithm
+                // move one step each from meeting point and head using two pointer with one pointing to
+                // head and another pointing to meeting point.
                 return getStartingNode(head, slowPointer).data;
             }
         }
