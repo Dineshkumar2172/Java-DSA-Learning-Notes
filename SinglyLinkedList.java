@@ -417,5 +417,38 @@ public class SinglyLinkedList {
         }
         slowPointer.next = null;
     }
-    
+
+
+    // @reference -  https://youtu.be/2ZLl8GAk1X4?t=31762
+    // merge two sorted singly linked list - result should also be sorted
+    public ListNode mergedSortedList(ListNode a, ListNode b){
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+        // if one of the linkedlist become empty, we can directly
+        // take remaining nodes from the anorther list and directly append them
+        // to dummy sorted linkedlist since remaining nodes already would've been sorted.
+        while (a != null && b != null) {
+            if (a.data <= b.data) {
+                tail.next = a;
+                a = a.next;
+            } else {
+                tail.next = b;
+                b = b.next;
+            }
+
+            tail = tail.next;   // move tail to latest/last node everytime we update dummy list.
+        }
+
+
+        // if there are any remaining nodes in a or b
+        // we can assign them directly to tail which would be pointing
+        // to last node from sorted dummy list.
+        if (a != null) {
+            tail.next = a;
+        } else {
+            tail.next = b;
+        }
+
+        return dummy;
+    }
 }
