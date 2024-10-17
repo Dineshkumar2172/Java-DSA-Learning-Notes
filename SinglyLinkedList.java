@@ -97,6 +97,27 @@ public class SinglyLinkedList {
         System.out.println(loopStart);
         sll.removeLoop(head1);
         sll.printElements(head1);
+
+
+
+        ListNode a1 = new ListNode(1);
+        ListNode a2 = new ListNode(4);
+        ListNode a3 = new ListNode(8);
+        ListNode b1 = new ListNode(3);
+        ListNode b2 = new ListNode(6);
+
+        ListNode a = a1;
+        a1.next = a2;
+        a2.next = a3;
+
+        ListNode b = b1;
+        b1.next = b2;
+
+        sll.printElements(a);
+        sll.printElements(b);
+        ListNode mergedSortedList = sll.mergedSortedList(a, b);
+        sll.printElements(mergedSortedList);
+
     }
 
 
@@ -449,6 +470,6 @@ public class SinglyLinkedList {
             tail.next = b;
         }
 
-        return dummy;
+        return dummy.next; // returning next since first node is reference node we created for reference
     }
 }
