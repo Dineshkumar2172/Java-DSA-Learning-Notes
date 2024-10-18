@@ -118,6 +118,23 @@ public class SinglyLinkedList {
         ListNode mergedSortedList = sll.mergedSortedList(a, b);
         sll.printElements(mergedSortedList);
 
+        ListNode l11 = new ListNode(3);
+        ListNode l12 = new ListNode(4);
+        ListNode l13 = new ListNode(3);
+        ListNode l21 = new ListNode(5);
+        ListNode l22 = new ListNode(6);
+        ListNode l23 = new ListNode(4);
+        
+        ListNode list1 = l11;
+        l11.next = l12;
+        l12.next = l13;
+        ListNode list2 = l21;
+        l21.next = l22;
+        l22.next = l23;
+        ListNode sumResult = sll.addLinkedList(list1, list2);
+        sll.printElements(list1);
+        sll.printElements(list2);
+        sll.printElements(sumResult);
     }
 
 
@@ -483,11 +500,11 @@ public class SinglyLinkedList {
     //
     // assume a -> 3 -> 4 -> 3 -> null
     // and    b -> 5 -> 6 -> 4 -> null
-    //   result -> 8 -> 0 -> 8 -> null
+    //   result -> 8 (3 + 4 + 1 it's carry) -> 0  (4 + 6) -> 8 (3 + 5) -> null
     public ListNode addLinkedList(ListNode a, ListNode b){
         ListNode dummy = new ListNode(0);
         ListNode tail = dummy;
-        int carry = 10;
+        int carry = 0;
         while (a != null || b != null) {
             int x = (a != null) ? a.data : 0;
             int y = (b != null) ? b.data : 0;
