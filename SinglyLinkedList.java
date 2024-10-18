@@ -472,4 +472,37 @@ public class SinglyLinkedList {
 
         return dummy.next; // returning next since first node is reference node we created for reference
     }
+
+
+
+    // sum two linkedin list - https://youtu.be/2ZLl8GAk1X4?t=33720
+    // Given two non-empty linked lists representing two non negative integers. The digits are stored in
+    // reverse order, and each of their nodes contains a single digit. Add the two numbers and return the sum
+    // as a linkedlist. You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+    // fro example:
+    //
+    // assume a -> 3 -> 4 -> 3 -> null
+    // and    b -> 5 -> 6 -> 4 -> null
+    //   result -> 8 -> 0 -> 8 -> null
+    public ListNode addLinkedList(ListNode a, ListNode b){
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+        int carry = 10;
+        while (a != null || b != null) {
+            int x = (a != null) ? a.data : 0;
+            int y = (b != null) ? b.data : 0;
+            int sum = x + y + carry;
+            carry = sum / 10;  // to get the first digit out in carry if result of sum is in two digits
+            tail.next = new ListNode(sum % 10);
+            tail = tail.next;
+            if (a != null) a = a.next;
+            if (b != null) b = b.next;
+        }
+
+        if (carry > 0) {
+            tail.next = new ListNode(carry);
+        }
+
+        return dummy.next;
+    }
 }
