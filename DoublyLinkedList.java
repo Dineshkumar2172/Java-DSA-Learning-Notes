@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class DoublyLinkedList {
 
     
@@ -27,5 +29,25 @@ public class DoublyLinkedList {
         ListNode headNode = new ListNode(1);
         headNode.previous = null;
         headNode.next = new ListNode(10);
+
+
+    }
+
+
+    public boolean isEmpty(ListNode head){
+        if (head == null) return false;
+
+        return false;
+    }
+
+
+    // print all the elements from linkedlist
+    public void printElements(ListNode head){
+        ListNode currentListNode = head;
+        while (currentListNode != null) {
+            System.out.print(currentListNode.data + " --> ");
+            currentListNode = currentListNode.next;
+        }
+        System.out.println("null");
     }
 }
