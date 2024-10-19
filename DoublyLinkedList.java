@@ -47,8 +47,15 @@ public class DoublyLinkedList {
 
         dll.printElements(head);
         dll.printElementsBackward(tail);
-
-
+        head = dll.insertElementAtFirst(head, 100);
+        dll.printElements(head);
+        dll.insertElementAtLast(tail, 200);
+        dll.insertElementAtLast(tail, 300);
+        dll.printElements(head);
+        head = dll.deleteFirstNode(head);
+        dll.printElements(head);
+        dll.deleteLastNode(tail);
+        dll.printElements(head);
     }
 
 
@@ -81,5 +88,46 @@ public class DoublyLinkedList {
         System.out.println(" null | head");
     }
 
+
+    // insert element at beginning of a doubly linked list
+    public ListNode insertElementAtFirst(ListNode head, Integer data){
+        ListNode newNode = new ListNode(data);
+        if (head == null) {
+            newNode.previous = null;
+            newNode.next = null;
+            head = newNode;
+            return head
+        }
+
+        newNode.previous = null;
+        newNode.next = head;
+        head.previous = newNode;
+        head = newNode;
+
+        return head;
+    }
+
+    
+    // insert element at the end of doubly linked list
+    public void insertElementAtLast(ListNode tail, Integer data){
+        ListNode newNode = new ListNode(data);
+        tail.next = newNode;
+        newNode.previous = tail;
+        tail = newNode;
+    }
+
+
+    // delete element at the beginning of doubly linked list
+    public ListNode deleteFirstNode(ListNode head){
+        head = head.next;
+        head.previous = null;
+        return head;
+    }
+
+
+    // delete element at the end of doubly linked list
+    public void deleteLastNode(ListNode tail){
+        tail.previous.next = null;
+    }
 
 }
