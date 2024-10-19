@@ -49,6 +49,16 @@ public class CircularSinglyLinkedList {
         tail = csll.insertElementAtEnd(tail, 5);
         csll.printElements(tail);
 
+
+        // delete first node
+        csll.deleteFirstNode(tail);
+        csll.printElements(tail);
+
+
+        // delete last node
+        tail = csll.deleteLastNode(tail);
+        csll.printElements(tail);
+
     }
 
 
@@ -63,7 +73,7 @@ public class CircularSinglyLinkedList {
     }
 
 
-    // insert node at the beginning of circular linked list
+    // insert node at the beginning of circular singly linked list
     public void insertElementAtFirst(ListNode tail, int data){
         ListNode firstNode = tail.next;
         ListNode newNode = new ListNode(data);
@@ -71,7 +81,8 @@ public class CircularSinglyLinkedList {
         tail.next = newNode;
     }
 
-    // insert node at the beginning of circular linked list
+
+    // insert node at the beginning of circular singly linked list
     public ListNode insertElementAtEnd(ListNode tail, int data){
         ListNode newNode = new ListNode(data);
         ListNode firstNode = tail.next;
@@ -79,5 +90,24 @@ public class CircularSinglyLinkedList {
         tail.next = newNode;
         tail = newNode;
         return tail;
+    }
+
+
+    // delete first node in circular singly linked list
+    public void deleteFirstNode(ListNode tail){
+        tail.next =  tail.next.next;
+    }
+
+
+    // delete last node in circular singly linked list
+    public ListNode deleteLastNode(ListNode tail){
+        ListNode currentNode = tail.next;
+        while (currentNode.next != tail) {
+            currentNode = currentNode.next;
+        }
+
+        currentNode.next = currentNode.next.next;
+        tail = currentNode;
+        return tail;  
     }
 }
