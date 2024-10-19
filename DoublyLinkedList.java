@@ -26,9 +26,27 @@ public class DoublyLinkedList {
          * 4. ListNode in Doubly Linked List (link to previous node) <---- data ----> (link to next node)
          */
         DoublyLinkedList dll = new DoublyLinkedList();
-        ListNode headNode = new ListNode(1);
-        headNode.previous = null;
-        headNode.next = new ListNode(10);
+        ListNode node1 = new ListNode(1);
+        ListNode node2 = new ListNode(10);
+        ListNode node3 = new ListNode(15);
+        ListNode node4 = new ListNode(65);
+        ListNode node5 = new ListNode(70);
+
+        ListNode head = node1;
+        node1.previous = null;
+        node1.next = node2;
+        node2.previous = node1;
+        node2.next = node3;
+        node3.previous = node2;
+        node3.next = node4;
+        node4.previous = node3;
+        node4.next = node5;
+        node5.previous = node4;
+        node5.next = null;
+        ListNode tail = node5;
+
+        dll.printElements(head);
+        dll.printElementsBackward(tail);
 
 
     }
@@ -50,4 +68,18 @@ public class DoublyLinkedList {
         }
         System.out.println("null");
     }
+
+
+    // print all the elements from linkedlist backwards
+    public void printElementsBackward(ListNode tail){
+        ListNode currentNode = tail;
+        System.out.print("null | tail <---");
+        while (currentNode != null) {
+            System.out.print(currentNode.data + " <--- ");
+            currentNode = currentNode.previous;
+        }
+        System.out.println(" null | head");
+    }
+
+
 }
