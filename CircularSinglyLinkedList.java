@@ -16,5 +16,14 @@ public class CircularSinglyLinkedList {
          * 2. Instead of head, we keep track of last node in circular singly linked list.
          */
         CircularSinglyLinkedList csll = new CircularSinglyLinkedList();
+        ListNode node1 = new ListNode(10);
+        ListNode node2 = new ListNode(10);
+
+        // snippet to check how comparing nodes with each other in java works.
+        if (node1 == node2) {
+            System.out.println("both are considered same");
+        } else {
+            System.out.println("Both are different though both have same data i.e. we are comparing their memeory address");
+        }
     }
 }
