@@ -1,5 +1,3 @@
-import java.util.List;
-
 public class DoublyLinkedList {
 
     
@@ -54,6 +52,7 @@ public class DoublyLinkedList {
         dll.printElements(head);
         head = dll.deleteFirstNode(head);
         dll.printElements(head);
+        dll.printElementsBackward(tail);
         dll.deleteLastNode(tail);
         dll.printElements(head);
     }
@@ -96,7 +95,7 @@ public class DoublyLinkedList {
             newNode.previous = null;
             newNode.next = null;
             head = newNode;
-            return head
+            return head;
         }
 
         newNode.previous = null;
@@ -107,7 +106,7 @@ public class DoublyLinkedList {
         return head;
     }
 
-    
+
     // insert element at the end of doubly linked list
     public void insertElementAtLast(ListNode tail, Integer data){
         ListNode newNode = new ListNode(data);
@@ -127,7 +126,10 @@ public class DoublyLinkedList {
 
     // delete element at the end of doubly linked list
     public void deleteLastNode(ListNode tail){
-        tail.previous.next = null;
+        ListNode temp = tail;
+        tail = tail.previous;
+        tail.next = null;
+        temp.previous = null;
     }
 
 }
