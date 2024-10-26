@@ -1,3 +1,5 @@
+import java.util.Stack;
+
 public class StackArray {
     private int top;
     private int[] arr;
@@ -13,6 +15,11 @@ public class StackArray {
         System.out.println("pop response : " + popResponse);
         int peekRespnse1 = stack.peek();
         System.out.println("peek response : " + peekRespnse1);
+        
+        
+        // reverse a string using stack in the middle
+        String reversedStr = stack.reverseString("something");
+        System.out.println(reversedStr);
     }
 
 
@@ -66,5 +73,21 @@ public class StackArray {
         }
 
         return false;
+    }
+
+
+    // reverse a string using stack
+    public String reverseString(String str){
+        Stack<Character> stack = new Stack<>();
+        char[] stringChars = str.toCharArray();
+        for (char c : stringChars) {
+            stack.push(c);
+        }
+
+        for (int i = 0; i < stringChars.length; i++) {
+            stringChars[i] = stack.pop();
+        }
+
+        return new String(stringChars);
     }
 }
