@@ -1,6 +1,6 @@
 import java.util.EmptyStackException;
 
-public class Stack{
+public class StackLinkedList{
     private ListNode top;
     private int length;
     
@@ -24,14 +24,19 @@ public class Stack{
          * top --> 10 --> 8 --> 1 --> 11 --> 15 --> null
          */
         
-        
-        
-        
+        StackLinkedList stack = new StackLinkedList();
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        System.out.println(stack.peek());
+        int result1 = stack.pop();
+        System.out.println("poped data : " + result1);
+        System.out.println(stack.peek());
     }
 
 
-    public Stack(){
-        top.next = null;
+    public StackLinkedList(){
+        top = null;
         length = 0;
     }
 
@@ -44,13 +49,15 @@ public class Stack{
     }
 
 
-    public void pop(){
+    public int pop(){
         if (isEmpty()) {
             throw new EmptyStackException();    
         }
 
+        int data = top.data;
         top = top.next;
         length--;
+        return data;
     }
 
 
@@ -59,7 +66,7 @@ public class Stack{
             throw new EmptyStackException();
         }
         
-        return top.next.data;
+        return top.data;
     }
 
 
