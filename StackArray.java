@@ -4,8 +4,15 @@ public class StackArray {
 
     public static void main(String[] args) {
         StackArray stack = new StackArray(3);
-
-        
+        stack.push(10);
+        stack.push(20);
+        stack.push(30);
+        int peekRespnse = stack.peek();
+        System.out.println("peek response : " + peekRespnse);
+        int popResponse = stack.pop();
+        System.out.println("pop response : " + popResponse);
+        int peekRespnse1 = stack.peek();
+        System.out.println("peek response : " + peekRespnse1);
     }
 
 
@@ -14,7 +21,7 @@ public class StackArray {
         this.arr = new int[capacity];
     }
 
-    
+
     public void push(int data){
         if (isFull()) {
             throw new RuntimeException("Stack is full !!!");
