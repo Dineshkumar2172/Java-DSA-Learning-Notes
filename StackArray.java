@@ -90,4 +90,12 @@ public class StackArray {
 
         return new String(stringChars);
     }
+
+
+    // find next greater element using stack 
+    public int[] nextGreaterElement(int[] arr){
+        int[] result = new int[arr.length];
+        
+        return result;
+    }
 }
