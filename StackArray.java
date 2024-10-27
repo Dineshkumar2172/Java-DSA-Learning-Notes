@@ -24,7 +24,7 @@ public class StackArray {
         int[] arr = {4, 7, 3, 4, 8, 1};
         int[] nextGreaterResult = stack.nextGreaterElement(arr);
         stack.printArray(nextGreaterResult);
-
+        System.out.println(stack.isValidParentheses("{]}"));
     }
 
 
@@ -127,4 +127,38 @@ public class StackArray {
         }
         System.out.println();
     }
+
+
+    // valid parentheses - Given a string s, containing just the characters "(", ")", "[", "]",
+    // "{". "}", determine if the input string is valid. An input string is valid if:
+    //      1. Open brackets must be closed by some type of brackets.
+    //      2. Open brackets must be closed in correct order.
+    //
+    // Example -
+    //      Input: str = "{()}" Output: true
+    //      Input: str = "{]}" Output: false
+    //      Input: str = "{()" Output: false
+     public boolean isValidParentheses(String str){
+        Stack<Character> stack =  new Stack<>();
+        for (Character character : str.toCharArray()) {
+            if (character == '{' || character == '(' || character == '[') {
+                stack.push(character);
+            } else {
+                if (stack.isEmpty()) {
+                    return false;
+                } else {
+                    char top = stack.peek();
+                    if ((character == '}' && top == '{') ||
+                        (character == ']' && top == '[') ||
+                        (character == ')' && top == '(')) {
+                        stack.pop();
+                    } else {
+                        return false;
+                    }
+                }
+            }
+        }
+        return stack.isEmpty();
+     }
+
 }
