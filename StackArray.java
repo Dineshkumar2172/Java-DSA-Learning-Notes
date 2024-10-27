@@ -20,6 +20,11 @@ public class StackArray {
         // reverse a string using stack in the middle
         String reversedStr = stack.reverseString("something");
         System.out.println(reversedStr);
+
+        int[] arr = {4, 7, 3, 4, 8, 1};
+        int[] nextGreaterResult = stack.nextGreaterElement(arr);
+        stack.printArray(nextGreaterResult);
+
     }
 
 
@@ -95,7 +100,31 @@ public class StackArray {
     // find next greater element using stack 
     public int[] nextGreaterElement(int[] arr){
         int[] result = new int[arr.length];
-        
+        Stack<Integer> stack = new Stack<>();
+        for (int i = arr.length - 1; i >= 0; i--) {
+            if (!stack.isEmpty()) {
+                while (!stack.isEmpty() && stack.peek() <= arr[i]) {
+                    stack.pop();
+                }
+            }
+
+            if (stack.isEmpty()) {
+                result[i] = -1;
+            } else {
+                result[i] = stack.peek();
+            }
+
+            stack.push(arr[i]);
+        }
+
         return result;
+    }
+
+
+    public void printArray(int[] arr){
+        for (int element : arr) {
+            System.out.print(element + ", ");
+        }
+        System.out.println();
     }
 }
