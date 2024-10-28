@@ -23,6 +23,7 @@ public class Queue {
         return length == 0;
     }
 
+
     public static void main(String[] args) {
         /*
          * 1. It is a linear data structure used for storing the data.
@@ -37,5 +38,18 @@ public class Queue {
 
         
         
+    }
+
+
+    public void insertElement(int data){
+        ListNode node = new ListNode(data);
+        if (isEmpty()) {
+            front = node;
+        } else {
+            rear.next = node;
+        }
+
+        rear = node;
+        length+; 
     }
 }
