@@ -41,7 +41,7 @@ public class Queue {
     }
 
 
-    public void insertElement(int data){
+    public void enqueue(int data){
         ListNode node = new ListNode(data);
         if (isEmpty()) {
             front = node;
