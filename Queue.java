@@ -49,6 +49,8 @@ public class Queue {
         System.out.println(queue.dequeue());
         System.out.println(queue.dequeue());
         queue.print();
+        System.out.println("first element : " + queue.first());
+        System.out.println("last element : " + queue.last());
     }
 
 
@@ -88,7 +90,7 @@ public class Queue {
         ListNode temp = front.next;
         front.next = null;
         front = temp;
-        
+
         if (front == null) {
             rear = null;
         }
@@ -96,4 +98,23 @@ public class Queue {
         length--;
         return dequeuedElement;
     }
+
+
+    public int first(){
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        return front.data;
+    }
+
+
+    public int last(){
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        return rear.data;
+    }
+
 }
