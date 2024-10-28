@@ -1,3 +1,5 @@
+import java.util.NoSuchElementException;
+
 public class Queue {
     private ListNode front;
     private ListNode rear;
@@ -36,8 +38,17 @@ public class Queue {
          *              front --> 10 --> 8 --> 1 --> 11 --> 15 --> rear
          */
 
-        
-        
+        Queue queue = new Queue();
+        queue.enqueue(10);
+        queue.enqueue(15);
+        queue.enqueue(20);
+        queue.enqueue(25);
+        queue.enqueue(30);
+        queue.enqueue(35);
+        queue.print();
+        System.out.println(queue.dequeue());
+        System.out.println(queue.dequeue());
+        queue.print();
     }
 
 
@@ -50,6 +61,39 @@ public class Queue {
         }
 
         rear = node;
-        length+; 
+        length++;
+    }
+
+
+    public void print(){
+        if (isEmpty()) {
+            return;
+        }
+        
+        ListNode current = front;
+        while (current != null) {
+            System.out.print(current.data + " --> ");
+            current = current.next;
+        }
+        System.out.println();
+    }
+
+
+    public int dequeue(){
+        if (isEmpty()) {
+            throw new NoSuchElementException();
+        }
+
+        int dequeuedElement = front.data;
+        ListNode temp = front.next;
+        front.next = null;
+        front = temp;
+        
+        if (front == null) {
+            rear = null;
+        }
+
+        length--;
+        return dequeuedElement;
     }
 }
