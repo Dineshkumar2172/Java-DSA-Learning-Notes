@@ -1,4 +1,28 @@
 public class Queue {
+    private ListNode front;
+    private ListNode rear;
+    private int length;
+
+    private class ListNode{
+        private int data;
+        private ListNode next;
+        public ListNode(int data){
+            this.data = data;
+            this.next = null;
+        }
+    }
+
+
+    public int length(){
+        return length;
+    }
+
+
+    public boolean isEmpty(){
+        // returns true if empty (0) and false if it has data in it
+        return length == 0;
+    }
+
     public static void main(String[] args) {
         /*
          * 1. It is a linear data structure used for storing the data.
@@ -10,5 +34,8 @@ public class Queue {
          * 
          *              front --> 10 --> 8 --> 1 --> 11 --> 15 --> rear
          */
-    }   
+
+        
+        
+    }
 }
