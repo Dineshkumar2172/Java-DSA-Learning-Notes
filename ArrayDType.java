@@ -1,5 +1,3 @@
-import javax.lang.model.type.NullType;
-
 public class ArrayDType {
     public static void main(String[] args) {
         /*
