@@ -72,6 +72,25 @@ public class BinaryTree {
         preOrderTraversal(rootNode.right);
     }
 
+    // recursive in-order traversal of a binary tree
+    public void inOrderTraversal(TreeNode rootNode){
+        if (rootNode == null) {
+            return;
+        }
 
-    // 
+        inOrderTraversal(rootNode.left);
+        System.out.print(rootNode.data);
+        inOrderTraversal(rootNode.right);
+    }
+
+    // recursive post-order traversal of a binary tree
+    public void postOrderTraversal(TreeNode rootNode){
+        if (rootNode == null) {
+            return;
+        }
+
+        postOrderTraversal(rootNode.left);
+        postOrderTraversal(rootNode.right);
+        System.out.print(rootNode.data + ", ");   
+    }   
 }
