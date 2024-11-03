@@ -167,7 +167,7 @@ public class BinaryTree {
         if (rootNode == null) {
             return;
         }
-
+        
         TreeNode current = rootNode;
         Stack<TreeNode> stack = new Stack<>();
         while (current != null | !stack.isEmpty()) {
