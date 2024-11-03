@@ -32,7 +32,26 @@ public class BinaryTree {
 
          BinaryTree binaryTree = new BinaryTree();
          binaryTree.createBinaryTree(); // create binary tree
+
+         System.out.print("pre order recursive traversal : ");
          binaryTree.preOrderTraversal(root);
+         System.out.println();
+
+         System.out.print("pre order iterative traversal : ");
+         binaryTree.iterPreOrderTraversal(root);
+         System.out.println();
+
+         System.out.print("in order recursive traversal : ");
+         binaryTree.inOrderTraversal(root);
+         System.out.println();
+
+         System.out.print("in order iterative traversal : ");
+         binaryTree.iterInOrderTraversal(root);
+         System.out.println();
+
+         System.out.print("post order iterative traversal : ");
+         binaryTree.postOrderTraversal(root);
+         System.out.println();
     }
 
     public void createBinaryTree(){
@@ -81,7 +100,7 @@ public class BinaryTree {
         }
 
         inOrderTraversal(rootNode.left);
-        System.out.print(rootNode.data);
+        System.out.print(rootNode.data + ", ");
         inOrderTraversal(rootNode.right);
     }
 
@@ -114,5 +133,34 @@ public class BinaryTree {
                 stack.push(temp.left);
             }
         }
+    }
+
+    // iterative in-order binary tree traversa; implementation
+    public void iterInOrderTraversal(TreeNode rootNode){
+        if (rootNode == null) {
+            return;
+        }
+
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode temp = root;
+        while (!stack.isEmpty() || temp != null) {
+           if (temp != null) {
+                stack.push(temp);
+                temp = temp.left;
+           } else {
+                temp = stack.pop();
+                System.out.print(temp.data + ", ");
+                temp = temp.right;
+           }
+        }
+    }
+
+    // iterative post-order binary tree traversa; implementation
+    public void iterPostOrderTraversal(TreeNode rootNode){
+        if (rootNode == null) {
+            return;
+        }
+
+
     }
 }
