@@ -1,5 +1,7 @@
 import java.util.Stack;
 
+import apple.laf.JRSUIUtils.Tree;
+
 public class BinaryTree {
 
     private static TreeNode root;
@@ -52,6 +54,11 @@ public class BinaryTree {
          System.out.print("post order iterative traversal : ");
          binaryTree.postOrderTraversal(root);
          System.out.println();
+
+         System.out.print("post order iterative traversal : ");
+         binaryTree.iterPostOrderTraversal(root);
+         System.out.println();
+
     }
 
     public void createBinaryTree(){
@@ -143,7 +150,7 @@ public class BinaryTree {
 
         Stack<TreeNode> stack = new Stack<>();
         TreeNode temp = root;
-        while (!stack.isEmpty() || temp != null) {
+        while (temp != null || !stack.isEmpty()) {
            if (temp != null) {
                 stack.push(temp);
                 temp = temp.left;
@@ -161,6 +168,26 @@ public class BinaryTree {
             return;
         }
 
+        TreeNode current = rootNode;
+        Stack<TreeNode> stack = new Stack<>();
+        while (current != null | !stack.isEmpty()) {
+            if (current != null) {
+                stack.push(current);
+                current = current.left;
+            } else {
+                TreeNode temp = stack.peek().right;
+                if (temp == null ) {
+                    temp = stack.pop();
+                    System.out.print(temp.data + ", ");
+                    while (!stack.isEmpty() && temp == stack.peek().right) {
+                        temp = stack.pop();
+                        System.out.print(temp.data + ", ");
+                    }
+                } else {
+                    current = temp;
+                }
+            }
+        }
 
     }
 }
