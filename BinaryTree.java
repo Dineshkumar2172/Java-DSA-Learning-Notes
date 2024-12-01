@@ -1,6 +1,6 @@
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
-
-import apple.laf.JRSUIUtils.Tree;
 
 public class BinaryTree {
 
@@ -57,6 +57,10 @@ public class BinaryTree {
 
          System.out.print("post order iterative traversal : ");
          binaryTree.iterPostOrderTraversal(root);
+         System.out.println();
+
+         System.out.print("level order traversal : ");
+         binaryTree.levelOrderTraversal(root);
          System.out.println();
 
     }
@@ -188,6 +192,24 @@ public class BinaryTree {
                 }
             }
         }
+    }
 
+    public void levelOrderTraversal(TreeNode rootNode) {
+        if (rootNode == null) {
+            return;
+        }
+
+        Queue<TreeNode> queue =  new LinkedList<>();
+        queue.offer(rootNode);
+        while (!queue.isEmpty()) {
+            TreeNode temp = queue.poll();
+            System.out.print(temp.data + ", ");
+            if (temp.left != null) {
+                queue.offer(temp.left);
+            }
+            if (temp.right != null) {
+                queue.offer(temp.right);
+            }
+        }
     }
 }
