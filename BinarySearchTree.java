@@ -21,6 +21,14 @@ public class BinarySearchTree {
          * 4. The left and right subtree each must also be a binary search tree.
          */
         BinarySearchTree binarySearchTree = new BinarySearchTree();
-        TreeNode node = new binarySearchTre
+        binarySearchTree.createBinarySearchNode(10);
+        System.out.println(root.data);
+        
+    }
+
+
+    public void createBinarySearchNode(int data) {
+        TreeNode rootNode = new TreeNode(data);
+        root = rootNode;
     }
 }
