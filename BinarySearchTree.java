@@ -31,4 +31,19 @@ public class BinarySearchTree {
         TreeNode rootNode = new TreeNode(data);
         root = rootNode;
     }
+
+    public TreeNode insertNode(TreeNode root, int data) {
+        if (root == null) {
+            root = new TreeNode(data);
+            return root;
+        }
+
+        if (data < root.data) {
+            root.left = insertNode(root.left, data);
+        } else {
+            root.right = insertNode(root.right, data);
+        }
+
+        return root;        
+    }
 }
