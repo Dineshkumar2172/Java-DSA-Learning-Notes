@@ -212,4 +212,23 @@ public class BinaryTree {
             }
         }
     }
+
+
+    public int findMax(TreeNode rootNode) {
+        if (rootNode == null) {
+            return Integer.MIN_VALUE;
+        }
+        
+        int result = rootNode.data;
+        int left = findMax(rootNode.left);
+        int right = findMax(rootNode.right);
+        if (left > result) {
+            result = left;
+        }
+        if (right > result) {
+            result = right;
+        }
+        
+        return result;
+    }
 }
