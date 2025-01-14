@@ -30,7 +30,7 @@ public class BinarySearchTree {
         System.out.println();
         TreeNode result = binarySearchTree.search(root, 10);
         System.out.println(result.data);
-        System.out.println("Is this valid binary search tree : " + binarySearchTree.validateBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
+        System.out.println("Is this valid binary search tree : " + binarySearchTree.validateBST(root, Long.MIN_VALUE, Long.MAX_VALUE));
     }
 
  
