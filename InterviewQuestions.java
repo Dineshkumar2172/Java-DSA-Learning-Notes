@@ -10,7 +10,7 @@ public class InterviewQuestions {
         Integer n = 4;
         Integer sortedMatrix[][] = {{10, 20, 30, 40}, {15, 25, 35, 45}, {27, 29, 37, 48}, {32, 33, 39, 51}};
         InterviewQuestions iq = new InterviewQuestions();
-        iq.searchKey(sortedMatrix, n, 37c);
+        iq.searchKey(sortedMatrix, n, 37);
     }
 
 
