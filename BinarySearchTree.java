@@ -22,28 +22,52 @@ public class BinarySearchTree {
          */
         BinarySearchTree binarySearchTree = new BinarySearchTree();
         binarySearchTree.createBinarySearchNode(10);
-        System.out.println(root.data);
-        
+        binarySearchTree.insertNode(root, 20);
+        binarySearchTree.insertNode(root, 7);
+        binarySearchTree.insertNode(root, 9);
+        binarySearchTree.insertNode(root, 6);
+        binarySearchTree.traverseBST(root);
+        System.out.println();
     }
 
-
+ 
     public void createBinarySearchNode(int data) {
         TreeNode rootNode = new TreeNode(data);
         root = rootNode;
     }
 
-    public TreeNode insertNode(TreeNode root, int data) {
+
+    public void traverseBST(TreeNode root){
         if (root == null) {
-            root = new TreeNode(data);
-            return root;
+            return;
         }
 
+        System.out.print(root.data + " --> ");
+        traverseBST(root.left);
+        traverseBST(root.right);
+    }
+
+
+    // In BST insertion always happens at the leaf node - it won't rearrange the tree during insertion
+    // If it involves handling of duplicates values being inserted as node, best way is to maintain them as count keys in each node
+    public TreeNode insertNode(TreeNode root, int data) {
+        if (root == null) {
+            // create new node with the user data and return it
+            return new TreeNode(data);
+        }
+
+        // travese to left node if data is smaller and right node if its larger
         if (data < root.data) {
+            // we call the same function but with next left node as root if data is smaller
+            // update the left node of last leaf node if data is smaller
             root.left = insertNode(root.left, data);
         } else {
+            // we call the function recursively with next right node as root
+            // if the data is larger than the right node
             root.right = insertNode(root.right, data);
         }
 
         return root;        
     }
 }
+ 
