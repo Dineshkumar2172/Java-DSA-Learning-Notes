@@ -28,6 +28,8 @@ public class BinarySearchTree {
         binarySearchTree.insertNode(root, 6);
         binarySearchTree.traverseBST(root);
         System.out.println();
+        TreeNode result = binarySearchTree.search(root, 10);
+        System.out.println(result.data);
     }
 
  
@@ -69,5 +71,21 @@ public class BinarySearchTree {
 
         return root;        
     }
+
+
+    // Function to search for an user input key
+    public TreeNode search(TreeNode root, int key){
+        if (root == null || root.data == key) {
+            return root;
+        }
+
+        // if search key is less than current root key
+        if (key < root.data) {
+            // pass left node again inside recursive by ignoring right section
+            return search(root.left, key);
+        } else {
+            // else pass right subtree as an input to the recursive function
+            return search(root.right, key);
+        }
+    }
 }
- 
