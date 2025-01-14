@@ -30,6 +30,7 @@ public class BinarySearchTree {
         System.out.println();
         TreeNode result = binarySearchTree.search(root, 10);
         System.out.println(result.data);
+        System.out.println("Is this valid binary search tree : " + binarySearchTree.validateBST(root, Integer.MIN_VALUE, Integer.MAX_VALUE));
     }
 
  
@@ -87,5 +88,33 @@ public class BinarySearchTree {
             // else pass right subtree as an input to the recursive function
             return search(root.right, key);
         }
+    }
+
+
+    // Given the root of a binary search tree, determine if it is a valid binary search tree
+    // A valid BST is defined as follows:
+    //      1. The left subtree of a node contains only nodes with keys less than the node's key
+    //      2. The right subtree of a node contains only nodes with keys greater than the node's key
+    //      3. Both the left and right subtree must also be a binary search trees.
+    // for reference - https://youtu.be/2ZLl8GAk1X4?t=72020
+    public Boolean validateBST(TreeNode root, long min, long max){
+        // Use two set of values min and max to validate the tree
+        //      1. If you go towards left subtree in remains same & max changes to parent value
+        //      2. If you go towards right subtree max remains same & min changes to parent value
+        if (root == null) { // base case
+            return true;
+        }
+
+        if (root.data <= min || root.data >=  max) {
+            return false;
+        }
+
+        boolean left = validateBST(root.left, min, root.data);
+        if (left) {
+            boolean right = validateBST(root.right, root.data, max);
+            return right;
+        }
+
+        return false;
     }
 }
