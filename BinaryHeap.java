@@ -83,5 +83,38 @@ public class BinaryHeap {
      *  2. After inserting an element into heap. It may not satisfy above heap property. Thus, we perform bottom-up reheapify
      *     technique, in which we adjust the locations of elements to satisfy heap property.
      */
+    public void insertNode(int data){
+        if (n == heap.length - 1) { // checking if heap array size can store new incoming element
+            // increase the size of queue to support addition of new 
+            resize(2*heap.length);
+        }
+
+        n++; // increment n as we need new elements to keep track of array size
+        heap[n] = data; // we store elements from left side of the tree and then order it to follow max heap rule
+        swim(n); // check and re-arrange the order if newly inserted element breaks the max heap rule
+    }
+
+    // function to resize the heap array incase of the capacity of the array exceeds
+    private void resize(int newsize){
+        Integer[] temp = new Integer[newsize];
+        for (int i = 0; i < heap.length; i++) {
+            temp[i] = heap[i];
+        }
+        heap = temp;
+    }
+
+
+    private void swim(int n){
+        // n > 1                    - rule check and rearrangement will happen only if there are more than one element in the queue
+        // heap[n/2] < heap[n]      - heap[n/2] will give index of the parent element, if it's less than the newly inserted element, then swap them
+        //                            process will continue again comparing the swapped parent with its parent and so on till it reached root element
+        //                            to make sure the queue is properly arranged following max heap rules
+        while (n > 1 && heap[n/2] < heap[n]) {
+            int temp = heap[n];
+            heap[n] = heap[n/2];
+            heap[n/2] = temp;
+            n = n/2; // updating n to keep track of the element that's newly inserted as it moves up during swap operation
+        }
+    }
 
 }
