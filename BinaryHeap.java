@@ -1,4 +1,7 @@
 public class BinaryHeap {
+    private Integer[] heap;
+    private int n;
+
     public static void main(String[] args) {
         /**
          * 
@@ -51,7 +54,34 @@ public class BinaryHeap {
         // max binary heap implementation - https://youtu.be/2ZLl8GAk1X4?t=78253
         //      1. A max heap is a complete binary tree in which each node value is >= than the values of its children.
         //      2. The maximum value is at the top which is root of complete binary tree. For its array representation its at index 1 i.e. heap[1]
+        BinaryHeap pq = new BinaryHeap(3);
+        System.out.println(pq.size());
+        System.out.println(pq.isEmpty());
 
-        
     }
+
+    public BinaryHeap(int capacity){
+    // constructor takes initial capacity of the heap
+        heap = new Integer[capacity + 1]; // initialising heap with capacity+1 since heap always starts with empty array
+        n = 0;
+    }
+
+    public boolean isEmpty(){
+        // returns if heap is empty or not
+        return n == 0;
+    }
+
+    public int size(){
+        // returns the size of max priority queue
+        return n;
+    }
+
+
+    /**
+     *      Bottom-up Reheapify Max  - https://youtu.be/2ZLl8GAk1X4?t=79027
+     *  1. A max heap is a complete binary tree in which each node value is >= than the values of its children.
+     *  2. After inserting an element into heap. It may not satisfy above heap property. Thus, we perform bottom-up reheapify
+     *     technique, in which we adjust the locations of elements to satisfy heap property.
+     */
+
 }
