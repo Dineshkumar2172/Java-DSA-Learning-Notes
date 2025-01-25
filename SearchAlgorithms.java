@@ -11,6 +11,13 @@ public class SearchAlgorithms {
 
         // Binary Search Algorithm - input array should be sorted
         // It's a divide and conquer algorith which splits the array into two during each iteration reducing our searcn time n/2
+        int[] arr2 = {1,2,3,6,8,9,10,45,78};
+        searchResult = binarySearch(arr2, arr2.length, 9);
+        if (searchResult >= 0) {
+            System.out.println("search element found at index : " + searchResult);
+        } else {
+            System.out.println("search element not found in the array");
+        }
     }
 
 
