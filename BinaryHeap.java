@@ -166,7 +166,9 @@ public class BinaryHeap {
         
         sink(1); // calling function to perform top-down reheapify operation
         heap[n + 1] = null; // deleting max element be
+        // incase a time comes where more than half of the array is empty
         if (n > 0 && (n == (heap.length - 1) / 4)) {
+            // reduce the size of the array to save memory
             resize(heap.length / 2);
         }
 
