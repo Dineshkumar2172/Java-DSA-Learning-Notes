@@ -121,7 +121,7 @@ public class BinaryHeap {
             int temp = heap[n];
             heap[n] = heap[n/2];
             heap[n/2] = temp;
-            n = n/2; // updating n to keep track of the element that's newly inserted as it moves up during swap operation
+            n = n/2; // because we need to continue shifting up till new value inserted is at correct position
         }
     }
 
@@ -132,6 +132,22 @@ public class BinaryHeap {
             System.out.print(heap[i] + " --> ");
         }
         System.out.println();
+    }
+
+
+    /* TOP DOWN REHEAPIFY (SINK) IN MAX HEAP */
+    //
+    //  After deleting an element from heap. It may not satisfy heap properties, Thus, we perform top-down
+    //  reheapify technique, in which we adjust the locations of elements to satisfy heap properties.
+    //  deleteMax() - from max binary heap
+    //  deleteMin() - from min binary heap
+    public int deleteMax(){
+        int max = heap[0]; 
+        // STEP 1: store max element in a variable perform deleting it as we need to return it back
+        // STEP 2: then swap the first element (max) and last element and then delete the last element (current position of max element)
+        // STEP 3: perform top-down reheapify on the heap array to arrange the array properly
+        // STEP 4: return max element saved in a variable
+        return 0;
     }
 
 }
