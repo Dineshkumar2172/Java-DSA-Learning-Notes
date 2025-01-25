@@ -57,7 +57,15 @@ public class BinaryHeap {
         BinaryHeap pq = new BinaryHeap(3);
         System.out.println(pq.size());
         System.out.println(pq.isEmpty());
-
+        pq.insertNode(4);
+        pq.insertNode(5);
+        pq.insertNode(2);
+        pq.insertNode(6);
+        pq.insertNode(1);
+        pq.insertNode(3);
+        System.out.println(pq.size());
+        System.out.println(pq.isEmpty());
+        pq.printMaxHeap();
     }
 
     public BinaryHeap(int capacity){
@@ -115,6 +123,15 @@ public class BinaryHeap {
             heap[n/2] = temp;
             n = n/2; // updating n to keep track of the element that's newly inserted as it moves up during swap operation
         }
+    }
+
+
+    /* Function to print Max Heap from left to right */
+    public void printMaxHeap(){
+        for (int i = 1; i <= size(); i++) {
+            System.out.print(heap[i] + " --> ");
+        }
+        System.out.println();
     }
 
 }
