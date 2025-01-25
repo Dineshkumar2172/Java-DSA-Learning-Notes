@@ -42,7 +42,7 @@ public class BinaryHeap {
          *      Children of 1st index = 2, 3
          *      Children of 2nd index = 4, 5
          *      Children of 3rd index = 6, 7
-         *      Children of kth index = 2*k, 2*k + !
+         *      Children of kth index = 2*k, 2*k + 1
          * 
          * Formula for finding parent:
          *      Parent of 7th index = 3
@@ -142,12 +142,58 @@ public class BinaryHeap {
     //  deleteMax() - from max binary heap
     //  deleteMin() - from min binary heap
     public int deleteMax(){
-        int max = heap[0]; 
         // STEP 1: store max element in a variable perform deleting it as we need to return it back
         // STEP 2: then swap the first element (max) and last element and then delete the last element (current position of max element)
         // STEP 3: perform top-down reheapify on the heap array to arrange the array properly
         // STEP 4: return max element saved in a variable
-        return 0;
+        int max = heap[1]; // get the max element to return it at last
+        swap(1, n); // swap first (max) and last element in the heap to perform deletion
+        n--; // total number of elements should become n - 1
+        
+        // Implemented by my understanding - perform top-down reheapify operation to rearrange the tree
+        // int startIndex = 1;
+        // int maxIndex = heap[2 * startIndex] > heap[2*startIndex + 1] ? 2*startIndex : 2*startIndex + 1; //  get the max child to begin rearrangement if required
+        // while (heap[maxIndex] > heap[startIndex]) {
+        //     int temp = heap[1];
+        //     heap[1] = heap[maxIndex];
+        //     heap[maxIndex] = temp;
+            
+        //     startIndex = maxIndex;
+        //     maxIndex = heap[2 * startIndex] > heap[2*startIndex + 1] ? 2*startIndex : 2*startIndex + 1;
+        // }
+
+        // Proper implementation
+        
+        sink(1); // calling function to perform top-down reheapify operation
+        heap[n + 1] = null; // deleting max element be
+        if (n > 0 && (n == (heap.length - 1) / 4)) {
+            resize(heap.length / 2);
+        }
+
+        return max;
+    }
+
+
+    public void swap(int a, int b){
+        int temp = heap[a];
+        heap[a] = heap[b];
+        heap[b] = temp;
+    }
+
+
+    public void sink(int k){
+        while (2*k <= n) { // condition to check if the parent has a children
+            int j = 2*k; // index of left children
+            // comparing two childrens
+            if (j < n && heap[j] < heap[j + 1]) { 
+                j++;
+            }
+            if (heap[k] >= heap[j]) {
+                break;
+            }
+            swap(k, j);
+            k = j;
+        }
     }
 
 }
