@@ -13,13 +13,22 @@ public class SortingAlgorithms {
     }
 
     public void binarySort(int[] arr, int n){
+        boolean isSwapped;
         for (int i = 0; i < n; i++) {
+            isSwapped = false;
             for (int j = 0; j < n-1; j++) {
                 if (arr[j] > arr[j+1]) {
                     int temp = arr[j];
                     arr[j] = arr[j+1];
                     arr[j+1] = temp;
+                    isSwapped = true;
                 }
+            }
+
+            // if no swap is performed during previous iteration
+            // then the array is already sorted, so no need to do more checks
+            if (!isSwapped) {
+                break;
             }
         }
     }
