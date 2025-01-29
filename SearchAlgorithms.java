@@ -18,6 +18,16 @@ public class SearchAlgorithms {
         } else {
             System.out.println("search element not found in the array");
         }
+
+        // Given a sorted array of distinct integers and a target value, return the index if the target is found.
+        // If not, return the index where it would be if it were inserted in order. The algorithm should run in O(log n) time.
+        // Example Input                target              output
+        // {1, 3, 5, 7}                 5                     2
+        // {1, 3, 5, 7}                 2                     1
+        // {1, 3, 5, 7}                 8                     4
+        // {1, 3, 5, 7}                 0                     0
+        // TODO: Yet to be done.
+
     }
 
 
