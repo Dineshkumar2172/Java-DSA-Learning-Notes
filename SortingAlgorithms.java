@@ -5,9 +5,30 @@ public class SortingAlgorithms {
         //      2. While applying this sorting algorithm on unsorted array, the largest elements tends to sink at the end of the array.
         //      3. It repeatedly compares pair of adjacent elements and swap them if they are in wrong order
         //      4. reference - https://youtu.be/2ZLl8GAk1X4?t=87325
+        SortingAlgorithms sortingAlgorithms = new SortingAlgorithms();
+        int[] arr = {7,6,5,4,3,2,1,0};
+        sortingAlgorithms.binarySort(arr, arr.length);
+        sortingAlgorithms.printArrayElements(arr);
 
     }
 
-    
+    public void binarySort(int[] arr, int n){
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n-1; j++) {
+                if (arr[j] > arr[j+1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j+1];
+                    arr[j+1] = temp;
+                }
+            }
+        }
+    }
+
+    public void printArrayElements(int[] arr){
+        for (int i : arr) {
+            System.out.print(i + ", ");
+        }
+        System.out.println();
+    }
 
 }
