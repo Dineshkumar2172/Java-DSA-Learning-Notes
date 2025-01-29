@@ -1,5 +1,6 @@
 import java.util.LinkedList;
 import java.util.Queue;
+import java.util.Stack;
 
 // Adjacency list is nothing by an array of linkedlist
 public class GraphsAdjacencyList {
@@ -57,6 +58,7 @@ public class GraphsAdjacencyList {
         graphsAdjacencyList.addEdge(2, 4);
         System.out.println(graphsAdjacencyList);
         graphsAdjacencyList.bfs(0);
+        graphsAdjacencyList.dfs(0);
     }
 
 
@@ -68,7 +70,7 @@ public class GraphsAdjacencyList {
         q.offer(s); // updating queue with the starting vertex to start traversing
         while (!q.isEmpty()) { // if queue is not empty
             int u = q.poll(); // get the data from queue
-            System.out.println(u + " "); // print it down
+            System.out.print(u + ", "); // print it down
 
             // update the connecting vertices to queue for traversing 
             for (int v : adj[u]) {
@@ -79,5 +81,26 @@ public class GraphsAdjacencyList {
                 }
             }
         }
+        System.out.println();
+    }
+
+
+    public void dfs(int s){
+        boolean[] visited = new boolean[this.V];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(s);
+        while (!stack.isEmpty()) {
+            int u = stack.pop();
+            if (!visited[u]) {
+                System.out.print(u + ", ");
+                visited[u] = true;
+                for (int v : adj[u]) {
+                    if (!visited[v]) {
+                        stack.push(v);
+                    }
+                }
+            }
+        }
+        System.out.println();
     }
 }
