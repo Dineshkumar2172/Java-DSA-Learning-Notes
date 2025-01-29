@@ -89,8 +89,6 @@ public class SortingAlgorithms {
             arr[min] = arr[i]; // updating smallest element's index with leftmost element
             arr[i] = temp; // updating leftmost element's index with smallest element
         }
-        
-
     }
 
     public void printArrayElements(int[] arr){
