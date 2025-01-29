@@ -37,6 +37,17 @@ public class SortingAlgorithms {
         //         2 halves. The algorithm is carried out recursively for half arrays, until there are no more half arrays to divide.
         //      3. Conquer - In this step starting from the bottom, we sort and merge the divided arrays and get the sorted array.
         // Implementation - https://youtu.be/2ZLl8GAk1X4?t=97558
+
+
+        // QUICK SORT Algorithm
+        //      1. Quick sort is a divide and conquer algorithm. It involves 3 steps -
+        //      2. Pivot Selection - We pick an element and mark it as pivot. The pivot element can be
+        //         first element, last element or any random element.
+        //      3. Partitioning - We reorder the array such that all elements greater than pivot comes after
+        //         the pivot and all elements smaller than pivot comes before the pivot. The elements equal to pivot
+        //         can go either side of the pivot. After this partitioning the pivot is at its correct sorted position.
+        //      4. Recursion - Recursively apply the above steps on the subarray formed to the left side of pivot and
+        //         on the subarray formed on the right of the pivot. 
     
     }
 
