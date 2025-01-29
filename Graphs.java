@@ -1,8 +1,12 @@
 public class Graphs {
     
-    int[][] adjMatrix;
+    private int[][] adjMatrix;
+    private int V; // number of vertices in graph
+    private int E; // number of edges in graph
 
     public Graphs(int nodes) {
+        this.V = nodes;
+        this.E = 0;
         this.adjMatrix = new int[nodes][nodes];
     }
 
@@ -11,6 +15,21 @@ public class Graphs {
         // relationship between em will go both ways, so both are set to 1
         this.adjMatrix[u][v] = 1;
         this.adjMatrix[v][u] = 1;
+        this.E++; // increase the edges as we add nodes
+    }
+
+    public String toString(){
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(V + " vertices, " + E + " edges " + "\n");
+        for (int v = 0; v < V; v++) {
+            stringBuilder.append(v + " : ");
+            for (int w : adjMatrix[v]) {
+                stringBuilder.append(w + " ");
+            }
+            stringBuilder.append("\n");
+        }
+
+        return stringBuilder.toString();
     }
 
     public static void main(String[] args) {
@@ -34,6 +53,7 @@ public class Graphs {
          graphs.addEdge(0, 1);
          graphs.addEdge(1, 2);
          graphs.addEdge(2, 3);
-         graphs.addEdge(3, 1);
+         graphs.addEdge(3, 0);
+         System.out.println(graphs);
     }
 }
