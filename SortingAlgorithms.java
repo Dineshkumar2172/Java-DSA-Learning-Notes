@@ -76,7 +76,7 @@ public class SortingAlgorithms {
             int min = i; // by default: first element index from unsorted array 
             
             // traversing over all the following elements after first element 
-            for (int j = i+1; j < n; j++) {
+            for (int j = i+1; j < n - 1; j++) { // n - 1 since last standing element doesn't need to be swapped
                 // if the element is lesser than the existing element in min index
                 if (arr[j] < arr[min]) {
                     min = j; // update min index with the new index
