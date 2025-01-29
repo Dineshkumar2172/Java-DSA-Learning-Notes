@@ -30,6 +30,14 @@ public class SortingAlgorithms {
         int[] arr3 = {7,6,5,4,3,2,1,0};
         sortingAlgorithms.selectionSort(arr3, arr3.length);
         sortingAlgorithms.printArrayElements(arr3);
+
+        // MERGE SORT Algorithm - https://youtu.be/2ZLl8GAk1X4?t=96985
+        //      1. Merge sort is a five and conquer algorithm.
+        //      2. Divide - In this step the algorithm takes middle point of array and divides the array into
+        //         2 halves. The algorithm is carried out recursively for half arrays, until there are no more half arrays to divide.
+        //      3. Conquer - In this step starting from the bottom, we sort and merge the divided arrays and get the sorted array.
+        // Implementation - https://youtu.be/2ZLl8GAk1X4?t=97558
+    
     }
 
     public void bubbleSort(int[] arr, int n){
