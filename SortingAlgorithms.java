@@ -21,8 +21,15 @@ public class SortingAlgorithms {
         sortingAlgorithms.printArrayElements(arr2);
 
         // SELECTION SORT Algorithm
-        
-
+        //      1. In selection sort we divide the given array into two parts - sorted part and unsorted part.
+        //      2. The algorithm sorts an array by repeatedly finding the minimum element in an unsorted array and making
+        //         it part of the sorted array.
+        //      3. From unsorted part, we pick minimum element and swap it with leftmost element of unsorted part. After swap,
+        //         that element now becomes part of the sorted array.
+        //      3. Its repeated till unsorted array is not empty.
+        int[] arr3 = {7,6,5,4,3,2,1,0};
+        sortingAlgorithms.selectionSort(arr3, arr3.length);
+        sortingAlgorithms.printArrayElements(arr3);
     }
 
     public void bubbleSort(int[] arr, int n){
@@ -61,6 +68,29 @@ public class SortingAlgorithms {
             // update current index with the first element
             arr[j + 1] = temp;
         }
+    }
+
+    public void selectionSort(int[] arr, int n){
+        for (int i = 0; i < arr.length; i++) {
+
+            int min = i; // by default: first element index from unsorted array 
+            
+            // traversing over all the following elements after first element 
+            for (int j = i+1; j < n; j++) {
+                // if the element is lesser than the existing element in min index
+                if (arr[j] < arr[min]) {
+                    min = j; // update min index with the new index
+                }
+            }
+            
+            // swap leftmost element from unsorted list with smallest
+            // element from unsorted lost
+            int temp = arr[min]; // storing smallest element to temp
+            arr[min] = arr[i]; // updating smallest element's index with leftmost element
+            arr[i] = temp; // updating leftmost element's index with smallest element
+        }
+        
+
     }
 
     public void printArrayElements(int[] arr){
