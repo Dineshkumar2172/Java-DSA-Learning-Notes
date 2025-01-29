@@ -7,12 +7,12 @@ public class SortingAlgorithms {
         //      4. reference - https://youtu.be/2ZLl8GAk1X4?t=87325
         SortingAlgorithms sortingAlgorithms = new SortingAlgorithms();
         int[] arr = {7,6,5,4,3,2,1,0};
-        sortingAlgorithms.binarySort(arr, arr.length);
+        sortingAlgorithms.bubbleSort(arr, arr.length);
         sortingAlgorithms.printArrayElements(arr);
 
     }
 
-    public void binarySort(int[] arr, int n){
+    public void bubbleSort(int[] arr, int n){
         boolean isSwapped;
         for (int i = 0; i < n; i++) {
             isSwapped = false;
