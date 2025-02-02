@@ -28,5 +28,7 @@ public class Hashing {
         //
         // Collision - https://youtu.be/2ZLl8GAk1X4?t=126955
         // Collision Resolution Technique (Separate Chaining) - https://youtu.be/2ZLl8GAk1X4?t=127076
+        // Representation of a HashNode in HashTable - https://youtu.be/2ZLl8GAk1X4?t=127513
+        // How to implement a hash table - https://youtu.be/2ZLl8GAk1X4?t=127695
     }
 }
