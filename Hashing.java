@@ -23,7 +23,7 @@ public class Hashing {
         //              get(key) - Get value for the provided key.
         //              remove(key) - Removes the key-value pair from HashTable.
         //      6. Average running time is O(1)
-        //      7. Java collections framework has hashmap class - if we want to deal with key-value pair
+        //      7. Java collections framework has hashmap class (pretty much same as hash table class) - if we want to deal with key-value pair
         //         and HashSet class if we want to deal with only keys.
     }
 }
