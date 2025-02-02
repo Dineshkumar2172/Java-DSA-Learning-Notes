@@ -62,6 +62,12 @@ public class GraphsAdjacencyList {
         // graphsAdjacencyList.addEdge(5, 5);
         graphsAdjacencyList.recursiveDfs();
         System.out.println();
+
+
+        // Connected Components - https://youtu.be/2ZLl8GAk1X4?t=120403
+        // 1. Count number of connected components
+        // 2. Return true / false if given two nodes are connected or not
+        graphsAdjacencyList.connectedComponentsDFS(); // move variables to instances scope and then use it to find answer for above questions
     }
 
 
@@ -132,5 +138,31 @@ public class GraphsAdjacencyList {
                 recursiveDfs(w, visited);
             }
         }
+    }
+
+
+    // connected components
+    public void connectedComponentsDFS(){
+        boolean[] visited =  new boolean[V];
+        int[] compId = new int[V]; // to keep track of which vertex belong to which component
+        int count = 0; // tracks number of component
+        for (int v = 0; v < V; v++) {
+            if (!visited[v]) {
+                connectedComponentsDFS(v, visited, compId, v);
+                count++; // increment component by 1 after processing each component
+            }
+        }
+    }
+
+    public void connectedComponentsDFS(
+            int v, boolean[] visited,
+            int[] compId, int count){
+            visited[v] = true;
+            compId[v] = count;
+            for (int w : adj[v]) {
+                if (!visited[v]) {
+                    connectedComponentsDFS(v, visited, compId, count);
+                }
+            }
     }
 }
