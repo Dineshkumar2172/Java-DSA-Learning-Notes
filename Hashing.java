@@ -25,5 +25,7 @@ public class Hashing {
         //      6. Average running time is O(1)
         //      7. Java collections framework has hashmap class (pretty much same as hash table class) - if we want to deal with key-value pair
         //         and HashSet class if we want to deal with only keys.
+        //
+        // Collision - https://youtu.be/2ZLl8GAk1X4?t=126955
     }
 }
