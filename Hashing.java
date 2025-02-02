@@ -13,6 +13,17 @@ public class Hashing {
         //              i. A modular hash function simply takes a key and size of array, returns remainder by dividing key by size.
         //             ii. The remainder is used as an index to store the key in an array of provided size.
 
-
+        // What is a hash table? - https://youtu.be/2ZLl8GAk1X4?t=126552
+        //      1. It is a generalised form of an array. (which uses hash functions to store elements)
+        //      2. It stores the data in form of key-value pair. (key is based on the index from hash function)
+        //      3. It converts key to an index using hash function.
+        //      4. Taking the converted index we store key-value in array.
+        //      5. The primary operations supported by HashTable are - 
+        //              put(key, value) - Adds key-value pair against unique key.
+        //              get(key) - Get value for the provided key.
+        //              remove(key) - Removes the key-value pair from HashTable.
+        //      6. Average running time is O(1)
+        //      7. Java collections framework has hashmap class - if we want to deal with key-value pair
+        //         and HashSet class if we want to deal with only keys.
     }
 }
