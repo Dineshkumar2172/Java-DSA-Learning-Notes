@@ -59,6 +59,9 @@ public class GraphsAdjacencyList {
         System.out.println(graphsAdjacencyList);
         graphsAdjacencyList.bfs(0);
         graphsAdjacencyList.dfs(0);
+        // graphsAdjacencyList.addEdge(5, 5);
+        graphsAdjacencyList.recursiveDfs();
+        System.out.println();
     }
 
 
@@ -85,6 +88,7 @@ public class GraphsAdjacencyList {
     }
 
 
+    // Depth First Search Using Iterative Approach
     public void dfs(int s){
         boolean[] visited = new boolean[this.V];
         Stack<Integer> stack = new Stack<>();
@@ -102,5 +106,31 @@ public class GraphsAdjacencyList {
             }
         }
         System.out.println();
+    }
+
+
+    // Recursive Depth First Search (Undirected Graph)
+    public void recursiveDfs() {
+        boolean[] visited = new boolean[V];
+        // this iteration is kept in place cover those vertices
+        // that are not linked with any of the other vertices
+        for (int v = 0; v < V; v++) {
+            if (!visited[v]) {
+                // this recursive function will actually traverse all 
+                // the connected vertices that are linked.
+                recursiveDfs(v, visited);
+            }
+        }
+    }
+
+
+    public void recursiveDfs(int v, boolean[] visited){
+        visited[v] = true;
+        System.out.print(v + ", ");
+        for(int w: adj[v]){
+            if (!visited[w]) {
+                recursiveDfs(w, visited);
+            }
+        }
     }
 }
