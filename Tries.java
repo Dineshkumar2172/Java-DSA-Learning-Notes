@@ -16,7 +16,13 @@ public class Tries{
          *         child nodes of a TrieNode. The size of array is usually taken as 26 (if we are storing english words)
          *      2. boolean isWord - A boolean value to indicate the end of word. This value is set as true
          *         when a word is inserted completely.
+         * 
+         * Implementation of the trie class - https://youtu.be/2ZLl8GAk1X4?t=139995
+         *      1. A trie will be implemented using TrieNode class
+         *      2. A root TrieNode is at top with empty value having 26 links (one per alphabet)
+         *      3. The links are either null or points to another TrieNode.
          */
+
+         
     }
 }
- 
