@@ -1,9 +1,18 @@
+import java.util.HashMap;
+import java.util.Map;
+
 public class DynamicProgramming {
     public static void main(String[] args) {
         DynamicProgramming dynamicProgramming = new DynamicProgramming();
         System.out.println(dynamicProgramming.fibonacci(4)); // calculate fibonacci number in a series
         int[] arr = {4, 3, -2, 6, -12, 7, -1, 6};
-        System.out.println(dynamicProgramming.maxSumSubarray(arr));
+        System.out.println(dynamicProgramming.maxSumSubarray(arr)); // calculate maximum sum in a given array
+        int[] arr2 = {2, 11, 5, 10, 7, 8};
+        int[] result = dynamicProgramming.findTwoSum(arr2, 9);
+        for (int i : result) {
+            System.out.print(i + ", ");
+        }
+        System.out.println();
     }
 
     public int fibonacci(int n){
@@ -38,5 +47,22 @@ public class DynamicProgramming {
         }
 
         return maxSoFar;
+    }
+
+    // reference - https://youtu.be/2ZLl8GAk1X4?t=151963
+    public int[] findTwoSum(int arr[], int target){
+        int[] result = new int[2];
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int i = 0; i < arr.length; i++) {
+            if (!map.containsKey(target - arr[i])) {
+                map.put(arr[i], i);
+            } else {
+                result[1] = i;
+                result[0] = map.get(target - arr[i]);
+                return result;
+            }
+        }
+
+        return result;
     }
 }
