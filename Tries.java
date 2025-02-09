@@ -1,4 +1,28 @@
 public class Tries{
+
+    private TrieNode root;
+
+    public Tries(){
+        root = new TrieNode(); // root is empty
+    }
+
+    private class TrieNode {
+        private TrieNode[] children;
+        private boolean isWord;
+        public TrieNode(){
+            this.children = new TrieNode[26]; // storing english words from a - z
+            this.isWord = false;
+        }
+    }
+
+    public void insert(String word){
+
+    }
+
+    public boolean search(String word){
+        return false;
+    }
+
     public static void main(String[] args) {
         /**
          *  What is a trie?
