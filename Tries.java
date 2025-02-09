@@ -22,6 +22,12 @@ public class Tries{
         // Case 3 - Insertion with word (common prefix)
         // Case 4 - Insertion with word already present
 
+        if (word == null || word.isEmpty()) {
+            throw new IllegalArgumentException("invalid input");
+        }
+
+        word =  word.toLowerCase();
+
         TrieNode current = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
@@ -40,6 +46,19 @@ public class Tries{
 
     // method to search for a word in trie
     public boolean search(String word){
+        TrieNode current = root;
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            int index = c - 'a';
+            if (current.children[index] == null) {
+                return false;
+            } else {
+                current = current.children[index];
+            }
+        }
+
+        if (current.isWord) return true;
+
         return false;
     }
 
@@ -69,5 +88,8 @@ public class Tries{
 
          Tries tries = new Tries();
          tries.insert("bob");
+         tries.insert("randomword");
+         tries.insert("random");
+         System.out.println(tries.search("rando"));
     }
 }
