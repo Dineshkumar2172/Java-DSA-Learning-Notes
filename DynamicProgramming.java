@@ -14,6 +14,7 @@ public class DynamicProgramming {
         }
         System.out.println();
         System.out.println(dynamicProgramming.isSubsequence("abcde", "ace")); // find if a string is subsequence of original string
+        System.out.println(dynamicProgramming.firstNonRepeatingCharacter("racecars"));
     }
 
     public int fibonacci(int n){
@@ -86,5 +87,36 @@ public class DynamicProgramming {
         }
 
         return j == seq.length();
+    }
+
+    // reference - https://youtu.be/2ZLl8GAk1X4?t=156147
+    public int firstNonRepeatingCharacter(String str){
+        // Given a string s, return the index of first non-repeating character in it.
+        // If it does not exist, return -1. The string will only contain lowercase letters.
+        // Example:
+        //      Input - "codeforcode"
+        //      Output - 4
+        //      Explanation - The first non-repeating character is 'f' and is found at index 4
+        //
+        // Example:
+        //      Input - "aabb"
+        //      Output - -1
+        //      Explanation - It doesn't have any non repeating character
+
+        Map<Character, Integer> map = new HashMap<>();
+        char[] chars = str.toCharArray();
+        // build a hashmap of characters and their occurence count.
+        for (char ch : chars) {
+            map.put(ch, map.getOrDefault(ch, 0) + 1);
+        }
+
+        for (int i = 0; i < chars.length; i++) {
+            // the first character with occurence count 1 should be returned
+            if (map.get(chars[i]) == 1) {
+                return i; // index of the first non repeating character
+            }   
+        }
+
+        return -1;
     }
 }
