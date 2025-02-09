@@ -1,6 +1,9 @@
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Stack;
 
 public class DynamicProgramming {
     public static void main(String[] args) {
@@ -18,6 +21,12 @@ public class DynamicProgramming {
         System.out.println(dynamicProgramming.firstNonRepeatingCharacter("racecars")); // find first no repeating character
         System.out.println(dynamicProgramming.removeVowels("what is your name?")); // remove all the vowels from the input string
         System.out.println(dynamicProgramming.reverseInteger(4562)); // reverse an integer
+        int[] arr3 = {44, 77, 33, 44, 88, 11};
+        List<Integer> arr4 = dynamicProgramming.slidingWindowMax(arr3, 3);
+        for (Integer integer : arr4) {
+            System.out.print(integer + ", ");
+        }
+        System.out.println();
     }
 
     public int fibonacci(int n){
@@ -186,6 +195,45 @@ public class DynamicProgramming {
         for (int i = arr.length - 1; i >= 0; i--) {
             result[i] = result[i] * temp;
             temp = temp *  arr[i];            
+        }
+
+        return result;
+    }
+
+    // reference - https://youtu.be/2ZLl8GAk1X4?t=164711
+    public List<Integer> slidingWindowMax(int[] arr, int k){
+        // Given an array of integers arr, there is a sliding window of size k which is moving from the
+        // very left of the array to the very right. You can only see the k numbers in the window. Each time
+        // the sliding window moves right by one position. Return the max sliding window.
+
+        int[] ngeArr =  nextGreaterElement(arr);
+        List<Integer> result = new ArrayList<>();
+        for (int i = 0; i <= arr.length - k; i++) {
+            int j = i;
+            while (ngeArr[j] < i+k) {
+                j = ngeArr[j];
+            }
+            result.add(arr[j]);
+        }
+        return result;
+    }
+
+    // reference - https://youtu.be/2ZLl8GAk1X4?t=165640
+    public int[] nextGreaterElement(int[] arr){
+        int[] result = new int[arr.length];
+        Stack<Integer> stack = new Stack<>();
+        for(int i = arr.length - 1; i >= 0; i --){
+            if (!stack.isEmpty()) {
+                while (!stack.isEmpty() && arr[stack.peek()] <= arr[i]) {
+                    stack.pop();
+                }
+            }
+            if (stack.isEmpty()) {
+                result[i] = arr.length;
+            } else {
+                result[i] = stack.peek();
+            }
+            stack.push(i);
         }
 
         return result;
