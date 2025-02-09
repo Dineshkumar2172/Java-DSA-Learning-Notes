@@ -1,5 +1,6 @@
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Set;
 
 public class DynamicProgramming {
     public static void main(String[] args) {
@@ -14,7 +15,8 @@ public class DynamicProgramming {
         }
         System.out.println();
         System.out.println(dynamicProgramming.isSubsequence("abcde", "ace")); // find if a string is subsequence of original string
-        System.out.println(dynamicProgramming.firstNonRepeatingCharacter("racecars"));
+        System.out.println(dynamicProgramming.firstNonRepeatingCharacter("racecars")); // find first no repeating character
+        System.out.println(dynamicProgramming.removeVowels("what is your name?")); // remove all the vowels from the input string
     }
 
     public int fibonacci(int n){
@@ -118,5 +120,23 @@ public class DynamicProgramming {
         }
 
         return -1;
+    }
+
+    // reference - https://youtu.be/2ZLl8GAk1X4?t=157734
+    public String removeVowels(String str){
+        // Given a string, remove the vowels from the string and return the string without vowels.
+        // The string will contains only lowercase letters.
+        Set<Character> vowels = Set.of('a', 'e', 'i', 'o', 'u');
+        StringBuilder sb = new StringBuilder();
+
+        char[] charArray = str.toCharArray();
+        for (char ch : charArray) {
+            // filter all the vowels from the input string
+            if (!vowels.contains(ch)) {
+                sb.append(ch);
+            }
+        }
+
+        return sb.toString();
     }
 }
