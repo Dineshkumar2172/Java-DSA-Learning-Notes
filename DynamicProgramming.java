@@ -17,6 +17,7 @@ public class DynamicProgramming {
         System.out.println(dynamicProgramming.isSubsequence("abcde", "ace")); // find if a string is subsequence of original string
         System.out.println(dynamicProgramming.firstNonRepeatingCharacter("racecars")); // find first no repeating character
         System.out.println(dynamicProgramming.removeVowels("what is your name?")); // remove all the vowels from the input string
+        System.out.println(dynamicProgramming.reverseInteger(4562)); // reverse an integer
     }
 
     public int fibonacci(int n){
@@ -138,5 +139,23 @@ public class DynamicProgramming {
         }
 
         return sb.toString();
+    }
+
+    // reference - https://youtu.be/2ZLl8GAk1X4?t=158654
+    public long reverseInteger(int number){
+        boolean isNegative = number < 0;
+        if (isNegative) {
+            number = number * -1;
+        }
+
+        long reverse = 0;
+        int lastDigit;
+        while (number > 0) {
+            lastDigit = number%10;
+            reverse = reverse*10 + lastDigit;
+            number = number/10;
+        }
+    
+        return isNegative ? reverse*-1 : reverse;
     }
 }
