@@ -15,10 +15,30 @@ public class Tries{
         }
     }
 
+    // method to insert a word in trie - https://youtu.be/2ZLl8GAk1X4?t=140647
     public void insert(String word){
+        // Case 1 - Insertion in empty Trie
+        // Case 2 - Insertion with word (no common prefix)
+        // Case 3 - Insertion with word (common prefix)
+        // Case 4 - Insertion with word already present
 
+        TrieNode current = root;
+        for (int i = 0; i < word.length(); i++) {
+            char c = word.charAt(i);
+            int index = c - 'a';
+            if (current.children[index] == null) {
+                TrieNode node = new TrieNode();
+                current.children[index] = node;
+                current = node;
+            } else {
+                current = current.children[index];
+            }
+        }
+
+        current.isWord = true; // flag to denote it's a full word
     }
 
+    // method to search for a word in trie
     public boolean search(String word){
         return false;
     }
@@ -47,6 +67,7 @@ public class Tries{
          *      3. The links are either null or points to another TrieNode.
          */
 
-         
+         Tries tries = new Tries();
+         tries.insert("bob");
     }
 }
