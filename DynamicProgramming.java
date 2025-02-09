@@ -13,6 +13,7 @@ public class DynamicProgramming {
             System.out.print(i + ", ");
         }
         System.out.println();
+        System.out.println(dynamicProgramming.isSubsequence("abcde", "ace")); // find if a string is subsequence of original string
     }
 
     public int fibonacci(int n){
@@ -64,5 +65,26 @@ public class DynamicProgramming {
         }
 
         return result;
+    }
+
+    // reference - https://youtu.be/2ZLl8GAk1X4?t=154470
+    public boolean isSubsequence(String originalString, String seq){
+        // Subsequence
+        // A subsequence of a string is a new string formed from the original string
+        // by deleting some or no characters without changing the order of remaining characters.
+        // example:
+        //      "ace" is a subsequence of "abcde"
+        //      "aec" is not a subsequence of "abcde"
+
+        int i = 0;
+        int j = 0;
+        while (i < originalString.length() && j < seq.length()) {
+            if (originalString.charAt(i) == seq.charAt(j)) {
+                j++;
+            }
+            i++;
+        }
+
+        return j == seq.length();
     }
 }
