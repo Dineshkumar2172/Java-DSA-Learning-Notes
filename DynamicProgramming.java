@@ -27,6 +27,8 @@ public class DynamicProgramming {
             System.out.print(integer + ", ");
         }
         System.out.println();
+        int[] arr5 = {2, 7, 3, 5, 8, 1};
+        System.out.println(dynamicProgramming.maxSubArraySum(arr5,3));
     }
 
     public int fibonacci(int n){
@@ -234,6 +236,29 @@ public class DynamicProgramming {
                 result[i] = stack.peek();
             }
             stack.push(i);
+        }
+
+        return result;
+    }
+
+    // reference - https://youtu.be/2ZLl8GAk1X4?t=167536
+    public int maxSubArraySum(int[] arr, int k){
+        // Given an array of integers arr, there is a sliding window of size k which is moving
+        // from the very left of the array to the very right. Find the maximum sum of any contiguous
+        // subarray of size k.
+        // Example:
+        //      Input: arr = {2, 7, 3, 5, 8, 1}, k = 3
+        //      Output: arr = 16
+        int result = 0;
+        for (int i = 0; i <= arr.length - k; i++) {
+            int subArraySum = 0;
+            for (int j = i; j < (i + k) ; j++) {
+                subArraySum += arr[j];
+            }
+
+            if (subArraySum > result) {
+                result = subArraySum;
+            }
         }
 
         return result;
