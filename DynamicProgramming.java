@@ -158,4 +158,36 @@ public class DynamicProgramming {
     
         return isNegative ? reverse*-1 : reverse;
     }
+
+    // reference - https://youtu.be/2ZLl8GAk1X4?t=161942
+    public int[] threeSum(int[] arr, int target){
+        // Given an array of distinct integers, print all such triplets such that they
+        // add up to a specific target. The triplet should be ordered in ascending order.
+        return arr;
+    }
+
+
+    // reference - https://youtu.be/2ZLl8GAk1X4?t=163360
+    public int[] productExcept(int[] arr){
+        // Given an array of integers arr[], return an array result[] such that result[i] is equal
+        // to the product of all the elements of arr except arr[i]. The product first in 32-bit integer.
+        // This algorithm should run in O(n) time and without using division operator.
+        // Example:
+        //      Input: arr = {1, 2, 3, 4}
+        //      Output: result = {24, 12, 8, 6}
+        int temp = 1;
+        int[] result = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            result[i] = temp;
+            temp = temp *  arr[i];
+        }
+
+        temp = 1;
+        for (int i = arr.length - 1; i >= 0; i--) {
+            result[i] = result[i] * temp;
+            temp = temp *  arr[i];            
+        }
+
+        return result;
+    }
 }
