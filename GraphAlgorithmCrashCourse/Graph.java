@@ -8,7 +8,7 @@ public class Graph {
     private boolean isWeighted; // flag to say if its weighted graph
     private boolean isDirected; // flag to say if its directed graph
 
-    public void graph(boolean inputIsWeighted, boolean inputIsDirected) {
+    public Graph(boolean inputIsWeighted, boolean inputIsDirected) {
         this.vertices = new ArrayList<Vertex>();
         this.isWeighted = inputIsWeighted;
         this.isDirected = inputIsDirected;
@@ -65,7 +65,7 @@ public class Graph {
     }
 
     public void print() {
-        for (Vertex vertex : vertices) {
+        for (Vertex vertex : this.vertices) {
             vertex.print(isWeighted);
         }
     }
@@ -81,6 +81,15 @@ public class Graph {
         //      2. Breadth First Search
         //      3. Dijkstra's algorithm
 
-        
+        Graph busNetwork = new Graph(true, false);
+        Vertex salemStation = busNetwork.addVertex("salem");
+        Vertex namakkalStation = busNetwork.addVertex("namakkal");
+
+        busNetwork.addEdge(salemStation, namakkalStation, 1000);
+
+        busNetwork.print();
+
+        // busNetwork.removeEdge(salemStation, namakkalStation);
+
     }
 }
