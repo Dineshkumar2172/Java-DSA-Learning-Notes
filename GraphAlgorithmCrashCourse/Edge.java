@@ -10,4 +10,16 @@ public class Edge {
         this.end = endV;
         this.weight = inputWeight;
     }
+
+    public Vertex getStart(){
+        return start;
+    }
+
+    public Vertex getEnd(){
+        return end;
+    }
+
+    public Integer getWeight(){
+        return weight;
+    }
 }
