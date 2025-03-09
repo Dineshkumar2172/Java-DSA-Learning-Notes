@@ -29,6 +29,37 @@ public class UndirectedGraphDFS {
         }
         return false;
     }
+
+
+    public boolean hasCycleRecursive(AdjacencyList adjacencyList) {
+        boolean[] visitedVertices = new boolean[adjacencyList.getNumberOfVertices()];
+
+        for (int i = 0; i < adjacencyList.getNumberOfVertices(); i++) {
+            if (!visitedVertices[i]) { // check for every connected component
+                if (dfsRecursive(i, -1, visitedVertices, adjacencyList)) {
+                    return true;
+                }
+            }    
+        }
+
+        return false;
+    }
+
+    private boolean dfsRecursive(Integer vertex, Integer parent, boolean[] visited, AdjacencyList adjacencyList) {
+        visited[vertex] = true;
+        
+        for (Integer neighbor : adjacencyList.getAdjList()[vertex]) {
+            if (!visited[neighbor]) {
+                if (dfsRecursive(neighbor, vertex, visited, adjacencyList)) {
+                    return true;
+                }
+            } else if (neighbor != parent) {
+                return true;
+            }
+        }
+
+        return false;
+    }
     
     public static void main(String[] args) {
         AdjacencyList adjacencyList = new AdjacencyList(7, true);
@@ -42,5 +73,6 @@ public class UndirectedGraphDFS {
 
         UndirectedGraphDFS undirectedGraphDFS = new UndirectedGraphDFS();
         System.out.println(undirectedGraphDFS.hasCycle(0, adjacencyList));
+        System.out.println(undirectedGraphDFS.hasCycleRecursive(adjacencyList));
     }
 }
