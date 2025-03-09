@@ -6,7 +6,7 @@ public class AdjacencyMatrix {
     //      2. each element in the matrix is set to either 0 or 1
     //      3. 0 represents no edges, 1 represents edges
 
-    private int[][] adjMatrix;
+    private int[][] adjMatrix; // has to integer in order to provide support for weighted graphs
     private boolean isUndirectedGraph; // flag for user to tell if its directed or undirected graph
 
     public AdjacencyMatrix(int v, boolean isUndirectedGraph){
