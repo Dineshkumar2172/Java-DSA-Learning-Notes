@@ -1,0 +1,1 @@
+Use an Adjacency List when dealing with a sparse graph (few edges compared to vertices), as it is more space-efficient, while an Adjacency Matrix is better suited for dense graphs (many edges between vertices) where quickly checking if an edge exists between two vertices is crucial;

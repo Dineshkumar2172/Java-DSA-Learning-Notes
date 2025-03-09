@@ -13,10 +13,13 @@ public class AdjacencyList {
     // Improvement: Could use List<Set<Integer>> to handle duplicate edges
     private LinkedList<Integer>[] adjList;
     private boolean isUndirectedGraph;
+    private int numEdges;
+    private int numVertices;
 
     public AdjacencyList(int v, boolean isUndirectedGraph) {
         this.adjList = new LinkedList[v]; // initialising array with v (number of vertices)
         this.isUndirectedGraph = isUndirectedGraph;
+        this.numVertices = v;
 
         for (int i = 0; i < v; i++) {
             this.adjList[i] = new LinkedList<>();
@@ -36,8 +39,10 @@ public class AdjacencyList {
         }
 
         this.adjList[startVertex].add(endVertex);
+        this.numEdges++;
         if (isUndirectedGraph) {
             this.adjList[endVertex].add(startVertex);
+            this.numEdges++;
         }
     }
 
@@ -54,8 +59,10 @@ public class AdjacencyList {
         }
 
         this.adjList[startVertex].remove(endVertex);
+        this.numEdges--;
         if (isUndirectedGraph) {
             this.adjList[endVertex].remove(startVertex);
+            this.numEdges--;
         }
     }
 
@@ -72,6 +79,18 @@ public class AdjacencyList {
 
     public boolean isValidVertex(int v) {
         return v >= 0 && v < adjList.length;
+    }
+
+    public int getNumberOfEdges() {
+        return numEdges;
+    }
+
+    public int getNumberOfVertices() {
+        return numVertices;
+    }
+
+    public LinkedList<Integer>[] getAdjList() {
+        return adjList;
     }
 
     public static void main(String[] args) {
