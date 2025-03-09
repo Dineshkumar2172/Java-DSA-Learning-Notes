@@ -30,7 +30,6 @@ public class UndirectedGraphDFS {
         return false;
     }
 
-
     public boolean hasCycleRecursive(AdjacencyList adjacencyList) {
         boolean[] visitedVertices = new boolean[adjacencyList.getNumberOfVertices()];
 
