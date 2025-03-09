@@ -1,3 +1,4 @@
 1. BFS & DFS (undirected graph)
 2. BFS & DFS (directed graph)
-3. BFS & DFS on cyclic graph
+
+(automatically handles cycles using visited nodes)
