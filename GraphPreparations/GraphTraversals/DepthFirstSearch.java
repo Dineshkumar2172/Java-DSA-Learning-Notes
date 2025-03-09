@@ -33,6 +33,25 @@ public class DepthFirstSearch {
         System.out.println();
     }
 
+    // for recursive, this visited array has to be maintained globally
+    private boolean[] visitedVertices;
+
+    public void dfsRecursiveInitialise(AdjacencyList adjacencyList) {
+        this.visitedVertices = new boolean[adjacencyList.getAdjList().length];
+    }
+
+    public void dfsRecursive(Integer vertex, AdjacencyList adjacencyList) {
+        if (visitedVertices[vertex]) return;
+
+        System.out.print(vertex + ", ");
+        visitedVertices[vertex] = true;
+
+        for (Integer neighbor: adjacencyList.getAdjList()[vertex]) {
+            dfsRecursive(neighbor, adjacencyList);
+        }
+    }
+
+
     public static void main(String[] args) {
         AdjacencyList adjacencyList = new AdjacencyList(10, false);
         adjacencyList.addEdge(0, 1);
@@ -49,6 +68,10 @@ public class DepthFirstSearch {
 
         DepthFirstSearch depthFirstSearch = new DepthFirstSearch();
         depthFirstSearch.dfsIterative(0, adjacencyList);
+
+        depthFirstSearch.dfsRecursiveInitialise(adjacencyList);
+        depthFirstSearch.dfsRecursive(0, adjacencyList);
+        System.out.println();
     }
 
 }
