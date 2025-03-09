@@ -6,13 +6,13 @@ public class AdjacencyMatrix {
     //      2. each element in the matrix is set to either 0 or 1
     //      3. 0 represents no edges, 1 represents edges
 
-    private boolean[][] adjMatrix;
+    private int[][] adjMatrix;
     private boolean isUndirectedGraph; // flag for user to tell if its directed or undirected graph
 
     public AdjacencyMatrix(int v, boolean isUndirectedGraph){
         // matrix is always in a dimension of V*V based on number of vertices
         // If there are 2 vertices in a graph, then it's dimension would be 2*2
-        this.adjMatrix = new boolean[v][v];
+        this.adjMatrix = new int[v][v];
         this.isUndirectedGraph = isUndirectedGraph;
     }
 
@@ -22,16 +22,16 @@ public class AdjacencyMatrix {
             return;
         }
 
-        if (adjMatrix[startVertex][endVertex]) {
+        if (adjMatrix[startVertex][endVertex] > 0) {
             System.out.println("Invalid operation: There is already an edge exists between " + startVertex + " and " + endVertex);
             return;
         }
 
-        this.adjMatrix[startVertex][endVertex] = true;
+        this.adjMatrix[startVertex][endVertex] = 1;
         // if its undirected graph
         if (isUndirectedGraph) {
             // then the equivalent reverse link should also be updated
-            this.adjMatrix[endVertex][startVertex] = true;
+            this.adjMatrix[endVertex][startVertex] = 1;
         }
     };
 
@@ -41,16 +41,16 @@ public class AdjacencyMatrix {
             return;
         }
 
-        if (!adjMatrix[startVertex][endVertex]) {
+        if (adjMatrix[startVertex][endVertex] == 0) {
             System.out.println("Invalid operation: There is no existing link between " + startVertex + " and " + endVertex);
             return;
         }
 
-        this.adjMatrix[startVertex][endVertex] = false;
+        this.adjMatrix[startVertex][endVertex] = 0;
          // if its undirected graph
         if (isUndirectedGraph) {
             // then the equivalent reverse link should also be updated
-            this.adjMatrix[endVertex][startVertex] = false;
+            this.adjMatrix[endVertex][startVertex] = 0;
         }
     };
 
@@ -60,9 +60,9 @@ public class AdjacencyMatrix {
 
     public void displayEdges(){
         System.out.println("adjacency matrix representation : ");
-        for (boolean[] row : this.adjMatrix) {
-            for (boolean b : row) {
-                System.out.print(b ? "1 " : "0 ");
+        for (int[] row : this.adjMatrix) {
+            for (int b : row) {
+                System.out.print(b + " ");
             }
 
             System.out.println();
@@ -81,6 +81,7 @@ public class AdjacencyMatrix {
 
         System.out.println("after removing edges : ");
         adjacencyMatrix.removeEdge(0, 4); // removed the edges between vertices 0 and 1
+        adjacencyMatrix.removeEdge(0, 1);
         adjacencyMatrix.displayEdges();
     }
 
