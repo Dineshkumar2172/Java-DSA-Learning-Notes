@@ -1,4 +1,14 @@
-1. BFS & DFS (undirected graph)
-2. BFS & DFS (directed graph)
+BFS and DFS naturally handles cyclic, acyclic, directed, undirected, connected and disconnected graphs.
 
-(automatically handles cycles using visited nodes)
+
+There is not separate implementation for each of these types of graphs.
+
+There are two ways to implement DFS and BFS. They are
+
+    1. iterative
+
+    2. recursive.
+
+
+Though iterative with adjacency list is enough as it's more memory efficient.
+
