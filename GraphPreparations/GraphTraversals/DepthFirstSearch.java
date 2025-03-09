@@ -51,7 +51,6 @@ public class DepthFirstSearch {
         }
     }
 
-
     public static void main(String[] args) {
         AdjacencyList adjacencyList = new AdjacencyList(10, false);
         adjacencyList.addEdge(0, 1);
