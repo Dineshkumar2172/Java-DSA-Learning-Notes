@@ -11,6 +11,7 @@ public class BipartiteGraph {
     // when none of the adjacent vertices has a same color - then it's bipartite graph.
     // A graph is bipartite if and only if it does not contain an odd-length cycle. (odd-length cycles are non-bipartites)
 
+    // using the same BFS implementation but with colors array instead of visitedVertices array
     public boolean isBipartiteGraph(AdjacencyList adjacencyList) {
         int[] colors = new int[adjacencyList.getNumberOfVertices()]; // 0: uncolored, 1: red, -1: blue
         for (int i = 0; i < adjacencyList.getNumberOfVertices(); i++) {
