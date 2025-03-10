@@ -10,5 +10,6 @@ Dijkstra's:
 Bellman-Ford Algorithm:
 
     1. Single source shortest path algorithm - based on dynamic programming.
-    2. It supports both positive and negative weighted graphs.
+    2. It supports both positive and negative weighted graphs. (Slower than Dijkstra but handles negative weights)
+    3. However it doesn't work on negative weighted cycle. So we need to ensure the graph doesn't contain negative weighted cycle.
     3. It works only on DG's. In order to make it work on UDG's, we have to create equivalent reverse edge for all nodes.

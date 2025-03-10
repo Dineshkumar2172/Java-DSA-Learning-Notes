@@ -5,7 +5,7 @@ import GraphPreparations.week2.WeightedAdjacencyList;
 public class BellmanFordAlgorithm {
 
     public void executeBellmanFord() {
-
+        
     }
 
     public static void main(String[] args) {
@@ -17,7 +17,7 @@ public class BellmanFordAlgorithm {
         weightedAdjacencyList.addEdge(2, 4, 1);
         weightedAdjacencyList.addEdge(3, 5, 2);
         weightedAdjacencyList.addEdge(4, 5, 3);
-        
+
         BellmanFordAlgorithm bellmanFordAlgorithm = new BellmanFordAlgorithm();
     }
 }
