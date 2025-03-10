@@ -4,6 +4,7 @@ import GraphPreparations.GraphRepresentations.AdjacencyList;
 
 public class DirectedGraphDFS {
     // reference - https://youtu.be/9twcmtQj4DU
+    // reference for Topological sorting in DFS - https://youtu.be/5lZ0iJMrUMk
 
     // Notes:
     //      1. Here we maintain two arrays
