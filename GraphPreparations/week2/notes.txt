@@ -1,7 +1,10 @@
 Dijkstra's:
 
     1. Single source shortest path algorithm - based on greedy algorithm.
+    2. Supports only positive weighted graph's - doesn't work on negative weights.
     2. It can be implemented using three methods:
         i) Priority Queue (it's time consuming, but better than queue)
        ii) Set (It's the fastest comparing to others)
       iii) Queue (it's time consuming)
+
+

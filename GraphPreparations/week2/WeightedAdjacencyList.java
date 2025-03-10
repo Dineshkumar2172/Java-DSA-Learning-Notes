@@ -1,4 +1,4 @@
-package GraphPreparations.week2.DijkstraAlgorithm;
+package GraphPreparations.week2;
 
 import java.util.LinkedList;
 

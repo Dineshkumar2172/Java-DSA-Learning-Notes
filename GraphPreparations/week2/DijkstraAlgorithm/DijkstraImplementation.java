@@ -4,6 +4,8 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 
+import GraphPreparations.week2.WeightedAdjacencyList;
+
 public class DijkstraImplementation {
 
     public void ExecuteDijkstra(Integer startVertex, WeightedAdjacencyList weightedAdjacencyList) {
