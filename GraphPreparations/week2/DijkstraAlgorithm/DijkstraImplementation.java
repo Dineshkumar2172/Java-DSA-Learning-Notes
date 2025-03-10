@@ -7,34 +7,32 @@ import java.util.PriorityQueue;
 public class DijkstraImplementation {
 
     public void ExecuteDijkstra(Integer startVertex, WeightedAdjacencyList weightedAdjacencyList) {
-        int[] shortestDistance = new int[weightedAdjacencyList.getVertexCount()];
-        Arrays.fill(shortestDistance, Integer.MAX_VALUE); // equivalent to setting the weight as infinity before exploring
-        shortestDistance[startVertex] = 0; // distance for a startVertex from itself is always 0
+        Integer[] shortestPath = new Integer[weightedAdjacencyList.getVertexCount()];
+        Arrays.fill(shortestPath, Integer.MAX_VALUE); // equivalent to infinity
+        shortestPath[startVertex] = 0; // Distance from starting point to itself will always be 0
 
-        PriorityQueue<Integer[]> pq = new PriorityQueue<>(Comparator.comparing(a -> a[1]));
-        pq.offer(new Integer[]{startVertex, 0}); // {node, distance}
+        PriorityQueue<Integer[]> pq = new PriorityQueue<>(Comparator.comparing(data -> data[1])); // based on weight, which is at index 1
+        pq.offer(new Integer[]{startVertex, 0});
 
         while (!pq.isEmpty()) {
-            Integer[] current = pq.poll();
-            Integer currentVertex = current[0], currentWeight = current[1];
+            Integer[] currentVertexData = pq.poll();
+            Integer currentVertex = currentVertexData[0], currentVertexWeight = currentVertexData[1];
 
-            if (currentWeight > shortestDistance[currentVertex]) continue; // skip if distance is outdated.
+            if (currentVertexWeight > shortestPath[currentVertex]) continue;
 
             for (Integer[] neighbor: weightedAdjacencyList.getAdjacencyList()[currentVertex]) {
-                Integer nextVertex = neighbor[0], weight = neighbor[1];
-                Integer newWeight = currentWeight + weight;
-
-                if (newWeight < shortestDistance[nextVertex]) {
-                    shortestDistance[nextVertex] = newWeight;
-                    pq.offer(new Integer[]{nextVertex, newWeight});
+                Integer nextVertex = neighbor[0];
+                Integer nextVertexWeightSum = currentVertexWeight + neighbor[1]; // distance of current node from previous node
+                if (nextVertexWeightSum < shortestPath[nextVertex]) {
+                    shortestPath[nextVertex] = nextVertexWeightSum;
+                    pq.offer(new Integer[]{nextVertex, nextVertexWeightSum});
                 }
             }
-
         }
 
         System.out.println("Shortest distance from the source vertex " + startVertex + ":");
-        for (int i = 0; i < shortestDistance.length; i++) {
-            System.out.println("To node " + i + " -> " + (shortestDistance[i] == Integer.MAX_VALUE ? "INF" : shortestDistance[i]));
+        for (int i = 0; i < shortestPath.length; i++) {
+            System.out.println("To node " + i + " -> " + (shortestPath[i] == Integer.MAX_VALUE ? "INF" : shortestPath[i]));
         }
     }
 
