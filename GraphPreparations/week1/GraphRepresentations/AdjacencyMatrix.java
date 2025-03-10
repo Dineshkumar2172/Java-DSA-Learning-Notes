@@ -1,4 +1,4 @@
-package GraphPreparations.GraphRepresentations;
+package GraphPreparations.week1.GraphRepresentations;
 
 public class AdjacencyMatrix {
     // representation

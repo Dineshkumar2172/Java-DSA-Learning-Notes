@@ -1,9 +1,9 @@
-package GraphPreparations.BipartiteGraph;
+package GraphPreparations.week1.BipartiteGraph;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-import GraphPreparations.GraphRepresentations.AdjacencyList;
+import GraphPreparations.week1.GraphRepresentations.AdjacencyList;
 
 public class BipartiteGraph {
     // reference - https://youtu.be/-vu34sct1g8

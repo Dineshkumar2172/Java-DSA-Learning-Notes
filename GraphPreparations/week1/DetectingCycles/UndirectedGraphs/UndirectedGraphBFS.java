@@ -1,10 +1,10 @@
-package GraphPreparations.DetectingCycles.UndirectedGraphs;
+package GraphPreparations.week1.DetectingCycles.UndirectedGraphs;
 
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.Queue;
 
-import GraphPreparations.GraphRepresentations.AdjacencyList;
+import GraphPreparations.week1.GraphRepresentations.AdjacencyList;
 
 public class UndirectedGraphBFS {
     // reference - https://youtu.be/BPlrALf1LDU

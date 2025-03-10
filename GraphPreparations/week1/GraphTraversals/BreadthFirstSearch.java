@@ -1,9 +1,9 @@
-package GraphPreparations.GraphTraversals;
+package GraphPreparations.week1.GraphTraversals;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-import GraphPreparations.GraphRepresentations.AdjacencyList;
+import GraphPreparations.week1.GraphRepresentations.AdjacencyList;
 
 public class BreadthFirstSearch {
 

@@ -1,6 +1,6 @@
-package GraphPreparations.DetectingCycles.DirectedGraphs;
+package GraphPreparations.week1.DetectingCycles.DirectedGraphs;
 
-import GraphPreparations.GraphRepresentations.AdjacencyList;
+import GraphPreparations.week1.GraphRepresentations.AdjacencyList;
 
 public class DirectedGraphDFS {
     // reference - https://youtu.be/9twcmtQj4DU

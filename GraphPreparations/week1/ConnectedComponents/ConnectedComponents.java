@@ -1,9 +1,9 @@
-package GraphPreparations.ConnectedComponents;
+package GraphPreparations.week1.ConnectedComponents;
 
 import java.util.LinkedList;
 import java.util.Queue;
 
-import GraphPreparations.GraphRepresentations.AdjacencyList;
+import GraphPreparations.week1.GraphRepresentations.AdjacencyList;
 
 public class ConnectedComponents {
     // Connected compoentes are used to find how many connected components are there in a disconnected graph.
