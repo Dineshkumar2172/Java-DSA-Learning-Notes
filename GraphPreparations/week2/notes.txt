@@ -7,4 +7,8 @@ Dijkstra's:
        ii) Set (It's the fastest comparing to others)
       iii) Queue (it's time consuming)
 
+Bellman-Ford Algorithm:
 
+    1. Single source shortest path algorithm - based on dynamic programming.
+    2. It supports both positive and negative weighted graphs.
+    3. It works only on DG's. In order to make it work on UDG's, we have to create equivalent reverse edge for all nodes.
