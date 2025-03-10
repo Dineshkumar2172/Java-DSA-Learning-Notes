@@ -1,4 +1,4 @@
-package GraphPreparations.DetectingCycles;
+package GraphPreparations.DetectingCycles.UndirectedGraphs;
 
 import java.util.Arrays;
 import java.util.LinkedList;
