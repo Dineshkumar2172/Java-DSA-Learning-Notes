@@ -7,7 +7,7 @@ Dijkstra's:
        ii) Set (It's the fastest comparing to others)
       iii) Queue (it's time consuming)
 
-Bellman-Ford Algorithm:
+Bellman-Ford Algorithm: - https://youtu.be/0vVofAhAYjc?list=PLgUwDviBIf0oE3gA41TKO2H5bHpPd7fzn
 
     1. Single source shortest path algorithm - based on dynamic programming.
     2. It supports both positive and negative weighted graphs. (Slower than Dijkstra but handles negative weights)
