@@ -58,7 +58,6 @@ public class FloydWarshallImplementation {
         }
     }
 
-
     public static void main(String[] args) {
         // representation of weighted graph in adjacency matrix
         int[][] graph = {
