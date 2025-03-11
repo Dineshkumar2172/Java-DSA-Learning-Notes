@@ -1,0 +1,6 @@
+Prim’s Algorithm Overview
+    1. Finds Minimum Spanning Tree (MST) for a connected, weighted, and undirected graph.
+    2. Greedy approach: Always picks the minimum-weight edge that expands the MST.
+    3. Uses Priority Queue (Min-Heap) to optimize selection of the smallest edge.
+
+    
