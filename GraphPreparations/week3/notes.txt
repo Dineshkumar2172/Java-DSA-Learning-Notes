@@ -2,5 +2,13 @@ Prim’s Algorithm Overview
     1. Finds Minimum Spanning Tree (MST) for a connected, weighted, and undirected graph.
     2. Greedy approach: Always picks the minimum-weight edge that expands the MST.
     3. Uses Priority Queue (Min-Heap) to optimize selection of the smallest edge.
+    4. Expands from a selected vertex
+    5. Fails while handling disconnected graphs (cannot start MST on all components)
 
-    
+Kruskal's Algorithm Overview
+    1. Works on both connected & disconnected weighted graphs.
+    2. Greedy + Union-Find (Edge-based)	(union find reference - https://youtu.be/aBxjDBC4M1U)
+    3. Picks the smallest edge (globally)
+    4. Finds an MST for each component separatel
+    5. reference:
+        1. https://youtu.be/wU6udHRIkcc
