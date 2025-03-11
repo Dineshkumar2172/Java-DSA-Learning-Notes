@@ -11,7 +11,6 @@ public class TopologicalSortingDFS {
     // 2. Perform DFS traversal, pushing nodes onto a stack after visiting all their neighbors.
     // 3. Pop the stack to get the topological order.
 
-
     public void dfs(Integer vertex, boolean[] visitedVertices, Stack<Integer> stack, AdjacencyList adjacencyList) {
         visitedVertices[vertex] = true;
         for (Integer neighbor: adjacencyList.getAdjList()[vertex]) {
