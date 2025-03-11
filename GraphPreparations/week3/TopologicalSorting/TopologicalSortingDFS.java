@@ -6,6 +6,12 @@ import GraphPreparations.week1.GraphRepresentations.AdjacencyList;
 
 public class TopologicalSortingDFS {
 
+    // Topological Sorting using DFS:
+    // 1. Use a boolean visited array to track visited nodes.
+    // 2. Perform DFS traversal, pushing nodes onto a stack after visiting all their neighbors.
+    // 3. Pop the stack to get the topological order.
+
+
     public void dfs(Integer vertex, boolean[] visitedVertices, Stack<Integer> stack, AdjacencyList adjacencyList) {
         visitedVertices[vertex] = true;
         for (Integer neighbor: adjacencyList.getAdjList()[vertex]) {
