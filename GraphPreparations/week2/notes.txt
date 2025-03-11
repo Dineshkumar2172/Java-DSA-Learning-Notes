@@ -18,3 +18,4 @@ Floyd-Warshall Algorithm
 
     1. All-pairs shortest path algorithm - finds distances between every pair of vertices in a weighted graph. (based on dynamic programming)
     2. Works both on directed & undirected graph, handles negative weights (but no negative cycles!).
+    1. Works based on adjacency matrix. Not based on adjacency list.
