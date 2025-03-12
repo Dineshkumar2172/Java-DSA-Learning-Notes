@@ -2,8 +2,6 @@ package GraphPreparations.practice.day1;
 
 import java.util.Arrays;
 
-import GraphAlgorithmCrashCourse.Vertex;
-
 public class AdjacencyMatrix {
     // representation
     //
