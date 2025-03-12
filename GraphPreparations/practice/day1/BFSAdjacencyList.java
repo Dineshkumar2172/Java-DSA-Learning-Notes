@@ -3,7 +3,7 @@ package GraphPreparations.practice.day1;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BFSIterative {
+public class BFSAdjacencyList {
     // representation:
     //      1. Get a start vertex from user to decided where to start traversing from.
     //      2. BFS uses queue to traverse through neighbors first and the traverse layer by layer.
@@ -48,7 +48,7 @@ public class BFSIterative {
         adjacencyList.addEdge(1, 4);
         adjacencyList.addEdge(3, 4);
         adjacencyList.displayGraph();
-        BFSIterative bfsIterative = new BFSIterative();
+        BFSAdjacencyList bfsIterative = new BFSAdjacencyList();
         bfsIterative.executeBFS(0, adjacencyList);
     }
 }
