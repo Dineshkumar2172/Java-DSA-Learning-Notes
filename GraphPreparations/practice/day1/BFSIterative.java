@@ -3,7 +3,7 @@ package GraphPreparations.practice.day1;
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class BFSAdjacencyList {
+public class BFSIterative {
     // representation:
     //      1. Get a start vertex from user to decided where to start traversing from.
     //      2. BFS uses queue to traverse through neighbors first and the traverse layer by layer.
@@ -35,7 +35,26 @@ public class BFSAdjacencyList {
                 }
             }
         }
+        System.out.println();
+    }
 
+    public void executeBFSAdjacencyMatrix(Integer startVertex, AdjacencyMatrix adjacencyMatrix) {
+        boolean[] visitedVertices = new boolean[adjacencyMatrix.getNumberOfVertices()];
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(startVertex);
+        visitedVertices[startVertex] = true;
+
+        while (!queue.isEmpty()) {
+            Integer current = queue.poll();
+            System.out.print(current + ", ");
+            for(Integer i = 0; i < adjacencyMatrix.getNumberOfVertices(); i++) {
+                if (adjacencyMatrix.getAdjacencyMatrix()[current][i] == 1 && !visitedVertices[i]) {
+                    queue.add(i);
+                    visitedVertices[i] = true;
+                }
+            }
+        }
+        System.out.println();
     }
 
 
@@ -48,7 +67,17 @@ public class BFSAdjacencyList {
         adjacencyList.addEdge(1, 4);
         adjacencyList.addEdge(3, 4);
         adjacencyList.displayGraph();
-        BFSAdjacencyList bfsIterative = new BFSAdjacencyList();
+        BFSIterative bfsIterative = new BFSIterative();
         bfsIterative.executeBFS(0, adjacencyList);
+
+        AdjacencyMatrix adjacencyMatrix = new AdjacencyMatrix(5, true, false);
+        // Add edges
+        adjacencyMatrix.addEdge(0, 1);
+        adjacencyMatrix.addEdge(0, 3);
+        adjacencyMatrix.addEdge(1, 2);
+        adjacencyMatrix.addEdge(1, 4);
+        adjacencyMatrix.addEdge(3, 4);
+        adjacencyMatrix.displayGraph();
+        bfsIterative.executeBFSAdjacencyMatrix(0, adjacencyMatrix);
     }
 }
