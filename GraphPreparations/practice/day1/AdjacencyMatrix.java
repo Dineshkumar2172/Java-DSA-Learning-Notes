@@ -4,6 +4,10 @@ import java.util.Arrays;
 
 public class AdjacencyMatrix {
     // representation
+    //      1. Its gonna be a V*V matrix, where each i, j combination represents edges.
+    //      2. In weighted graphs, graph should be initialised with -1
+    //      3. In unweighted graphs, graph should be initialised with 0, while 1 represents edge exist.
+    //      4. It could be either weighted, unweighted, directed or undirected in nature.
     //
     // Operations:
     //      1. getAdjacencyMatrix
