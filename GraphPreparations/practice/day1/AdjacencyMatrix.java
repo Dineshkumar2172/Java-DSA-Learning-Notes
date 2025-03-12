@@ -73,6 +73,8 @@ public class AdjacencyMatrix {
         }
     }
 
+    public Integer getWeight(Integer sourceVertex, Integer destinationVertex) { return this.adjacencyMatrix[sourceVertex][destinationVertex]; }
+
     public void displayGraph() {
         for (int i = 0; i < this.vertexCount; i++) {
             System.out.print("Vertex " + i + " : ");
