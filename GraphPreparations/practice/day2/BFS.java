@@ -8,7 +8,7 @@ public class BFS {
     //  1. Initialise visitedVertex array to keep track of visited vertices.
     //  2. Get startVertex from the client to know where to start the traversal from.
     //  3. Initialise a queue with type integer to keep track of vertices for traversing in layer by layer manner.
-    //  3. BFS works irrespective of if a graph is directional, undirectional, weighted or unweighted.
+    //  3. BFS works irrespective of if a graph is directional, undirectional, unweighted.
     //  4. It's a neither greedy nor dynamic algorithms - its a graph traversal that helps you traverse through graph.                   
 
     public void executeBFSAdjacencyList(int startVertex, AdjacencyList adjacencyList) {
