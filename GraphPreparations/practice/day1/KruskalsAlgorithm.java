@@ -33,7 +33,7 @@ public class KruskalsAlgorithm {
 
             return vertex;
         }
-
+ 
         boolean union(int u, int v) {
             int rootU = find(u);
             int rootV = find(v);
