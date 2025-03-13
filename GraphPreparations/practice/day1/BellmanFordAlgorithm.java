@@ -8,7 +8,7 @@ public class BellmanFordAlgorithm {
     // 1. it's a single source shortest path algorithm in dynamic programming.
     // 2. It supports both directed and undirected graphs with weighted edges.
     // 2. unlike Dijkstra, it works with negative edges, and it can detect negative cycles (though it fails negative cycles)
-    // 3. works based on relaxation, if (d[u] + c(u,v) > d[v]) then update d[v] with d[u] + c(u,v)
+    // 3. works based on relaxation, if (d[u] + c(u,v) < d[v]) then update d[v] with d[u] + c(u,v)
 
     static class Edge {
         Integer source;
