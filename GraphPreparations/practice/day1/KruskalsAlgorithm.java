@@ -31,7 +31,7 @@ public class KruskalsAlgorithm {
                 parent[vertex] = find(parent[vertex]); // path compression
             }
 
-            return vertex;
+            return parent[vertex];
         }
  
         boolean union(int u, int v) {

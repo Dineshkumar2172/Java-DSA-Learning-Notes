@@ -41,7 +41,7 @@ public class KruskalsAlgorithm {
                 parent[vertex] = find(parent[vertex]); // path compression
             }
 
-            return vertex;
+            return parent[vertex];
         }
 
         // should return false if there is a cycle
