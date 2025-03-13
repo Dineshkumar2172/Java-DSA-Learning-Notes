@@ -8,7 +8,8 @@ public class DijkstraAlgorithm {
     
     // It's used to find single source shortest path.
     // It's a greedy algorithm - meaning it makes optimised decision during each step by choosing less weighted edges.
-    // It works positive weighted graph and cycle irrespective of directionality.
+    // It works on positive weighted graph and cycle irrespective of directionality.
+    // It doesn't support negative edges, negative weighted cycle.
     public void executeDijkstra(Integer startVertex, AdjacencyList adjacencyList) {
         Integer[] shortestPath = new Integer[adjacencyList.getNumberOfVertices()];
         Arrays.fill(shortestPath, Integer.MAX_VALUE);
