@@ -4,6 +4,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import GraphPreparations.practice.day1.AdjacencyList;
+
 public class BellmanFord {
 
     static class Edge {
@@ -16,37 +18,37 @@ public class BellmanFord {
             this.weight = weight;
         }
     }
-
-    public void executeBellmanFord (int vertex, List<Edge> edges) {
-        Integer[] shortestPath = new Integer[edges.size()];
+    public void executeBellmanFord2(int start, List<Edge> edges) {
+        int[] shortestPath = new int[edges.size()];
         Arrays.fill(shortestPath, Integer.MAX_VALUE);
-        shortestPath[vertex] = 0;
+        shortestPath[start] = 0;
 
-        // perform relaxation n - 1 times.
+        // perform n -1 iteration
         for (int i = 0; i < edges.size() - 1; i++) {
+            // performing relaxation on all edges
             for (Edge edge: edges) {
-                if (shortestPath[edge.src] != Integer.MAX_VALUE &&
+                if (edge.src != Integer.MAX_VALUE &&
                     shortestPath[edge.src] + edge.weight < shortestPath[edge.destination]) {
                         shortestPath[edge.destination] = shortestPath[edge.src] + edge.weight;
                 }
             }
         }
 
-        // check for cycle
         for (Edge edge: edges) {
-            if (shortestPath[edge.src] != Integer.MAX_VALUE &&
+            if (edge.src != Integer.MAX_VALUE &&
                 shortestPath[edge.src] + edge.weight < shortestPath[edge.destination]) {
-                    System.out.println("negative cycle detected");
+                    System.out.println("cycle detected");
                     return;
             }
         }
 
-        System.out.println("shortest distance from vertex " + vertex + " :");
-         for (int i = 0; i < edges.size(); i++) {
-            System.out.println("To vertex " + i + " : " + (shortestPath[i] == Integer.MAX_VALUE ? "INF" : shortestPath[i]));
-         }
-         System.out.println();
+        System.out.println("shortest path from vertex " + start + ": ");
+        for (int i = 0; i < edges.size(); i++) {
+            System.out.println("To vertex " + i + ": " + (shortestPath[i] != Integer.MAX_VALUE ? shortestPath[i] : "INF"));
+        }
+        System.out.println();
     }
+
 
     public static void main(String[] args) {
         List<Edge> edges = new ArrayList<>();
@@ -60,6 +62,6 @@ public class BellmanFord {
         edges.add(new Edge(4, 3, -3));
 
         BellmanFord bellmanFord = new BellmanFord();
-        bellmanFord.executeBellmanFord(0, edges);
+        bellmanFord.executeBellmanFord2(0, edges);
     }
 }
