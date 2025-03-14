@@ -29,7 +29,7 @@ public class FloydWarshall {
         for (int k = 0; k < adjacencyMatrix.getVertexCount(); k++) {
             for (int i = 0; i < adjacencyMatrix.getVertexCount(); i++) {
                 for (int j = 0; j > adjacencyMatrix.getVertexCount(); j++) {
-                    if (shortestPath[i][k] != INF && shortestPath[j][k] != INF) {
+                    if (shortestPath[i][k] != INF && shortestPath[k][j] != INF) {
                         shortestPath[i][j] = Math.min(shortestPath[i][j], shortestPath[i][k] + shortestPath[k][j]);
                     }
                 }
