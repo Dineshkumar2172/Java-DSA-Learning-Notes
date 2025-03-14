@@ -1,5 +1,8 @@
 package GraphPreparations.practice.day3;
 
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
 import java.util.Stack;
 
 import GraphPreparations.practice.day1.AdjacencyList;
@@ -36,6 +39,37 @@ public class TopologicalSortDFS {
         System.out.println();
     }
 
+    public void executeBFS(AdjacencyList adjacencyList) {
+        int[] inDegree = new int[adjacencyList.getNumberOfVertices()];
+
+        for (int i = 0; i < adjacencyList.getNumberOfVertices(); i++) {
+            for (Integer[] neighbor: adjacencyList.getAdjacencyList().get(i)) {
+                inDegree[neighbor[0]]++;
+            }
+        }
+
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i = 0; i < adjacencyList.getNumberOfVertices(); i++) {
+            if (inDegree[i] == 0) {
+                queue.offer(i);
+            }
+        }
+
+        List<Integer> topoOrder = new LinkedList<>();
+        while (!queue.isEmpty()) {
+            Integer current = queue.poll();
+            topoOrder.add(current);
+            for (Integer[] neighbor: adjacencyList.getAdjacencyList().get(current)) {
+                if (--inDegree[neighbor[0]] == 0) {
+                    queue.offer(neighbor[0]);
+                }
+            }
+        }
+
+        System.out.println("Topological order in BFS : " + topoOrder);
+
+    }
+
     public static void main(String[] args) {
         AdjacencyList adjacencyList = new AdjacencyList(6, false, false);
         adjacencyList.addEdge(5, 2);
@@ -47,5 +81,6 @@ public class TopologicalSortDFS {
 
         TopologicalSortDFS topoOrder = new TopologicalSortDFS();
         topoOrder.executeDFS(adjacencyList);
+        topoOrder.executeBFS(adjacencyList);
     }
 }
