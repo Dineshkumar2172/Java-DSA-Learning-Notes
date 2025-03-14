@@ -52,6 +52,5 @@ public class Dijkstra {
 
         Dijkstra dijkstra = new Dijkstra();
         dijkstra.executeDijkstra(0, adjacencyList);
-        dijkstra.executeDijkstra2(0, adjacencyList);
     }
 }
