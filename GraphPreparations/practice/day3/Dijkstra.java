@@ -8,34 +8,36 @@ import GraphPreparations.practice.day2.AdjacencyList;
 
 public class Dijkstra {
     // works based on relaxation
+    public void executeDijkstra(int start, AdjacencyList adjacencyList) {
+        int[] shortestDistance =  new int[adjacencyList.getNumberOfVertices()];
+        Arrays.fill(shortestDistance, Integer.MAX_VALUE);
+        shortestDistance[start] = 0;
 
-    public void executeDijkstra(int vertex, AdjacencyList adjacencyList) {
-         int[] shortestPath = new int[adjacencyList.getNumberOfVertices()];
-         Arrays.fill(shortestPath, Integer.MAX_VALUE);
-         PriorityQueue<Integer[]> pq = new PriorityQueue<>(Comparator.comparing(edge -> edge[1]));
-         shortestPath[vertex] = 0;
-         pq.offer(new Integer[]{vertex, 0});
-
-         while (!pq.isEmpty()) {
+        PriorityQueue<Integer[]> pq = new PriorityQueue<>(Comparator.comparing(edge -> edge[1]));
+        pq.offer(new Integer[]{start, 0});
+        
+        while (!pq.isEmpty()) {
             Integer[] current = pq.poll();
             Integer currentVertex = current[0], currentWeight = current[1];
-            if (currentWeight > shortestPath[currentVertex]) continue;
-            for (Integer[] neighbor: adjacencyList.getAdjacencyList().get(currentVertex)) {
-                Integer nextVertex = neighbor[0];
-                // relaxation data computation: c(U, V)
-                Integer nextVertexWeight = currentWeight + neighbor[1];
-                if (nextVertexWeight < shortestPath[nextVertex]) {
-                    shortestPath[nextVertex] = nextVertexWeight;
-                    pq.offer(new Integer[]{nextVertex, nextVertexWeight});
+
+            if (currentWeight > shortestDistance[currentVertex]) continue;
+
+            for (Integer[] neighbors: adjacencyList.getAdjacencyList().get(currentVertex)) {
+                Integer nextVertex = neighbors[0];
+                Integer nextWeight = neighbors[1];
+                if (currentWeight + nextWeight < shortestDistance[nextVertex]) {
+                    shortestDistance[nextVertex] = currentWeight + nextWeight;
+                    pq.offer(new Integer[]{nextVertex, currentWeight + nextWeight});
                 }
             }
-         }
+        }
 
-         System.out.println("shortest distance from vertex " + vertex + " :");
-         for (int i = 0; i < adjacencyList.getNumberOfVertices(); i++) {
-            System.out.println("To " + i + ": " + shortestPath[i]);
-         }
-         System.out.println();
+        System.out.println("The shortest distance from vertex " + start + ": ");
+        for (int i  = 0; i < adjacencyList.getNumberOfVertices(); i++) {
+            System.out.println("To vertex " + i + ": " + shortestDistance[i]);
+        }
+        System.out.println();
+
     }
 
     public static void main(String[] args) {
@@ -50,5 +52,6 @@ public class Dijkstra {
 
         Dijkstra dijkstra = new Dijkstra();
         dijkstra.executeDijkstra(0, adjacencyList);
+        dijkstra.executeDijkstra2(0, adjacencyList);
     }
 }
