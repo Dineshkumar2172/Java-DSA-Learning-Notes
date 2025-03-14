@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import GraphPreparations.practice.day1.AdjacencyList;
-
 public class BellmanFord {
 
     static class Edge {
