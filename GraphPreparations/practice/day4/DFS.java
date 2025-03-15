@@ -61,6 +61,21 @@ public class DFS {
                 }
             }
         }
+
+        System.out.println();
+    }
+
+    public void executeDFS(int vertex, AdjacencyMatrix adjacencyMatrix, boolean[] visitedVertices) {
+        if (visitedVertices[vertex]) return;
+
+        System.out.print(vertex + ", ");
+        visitedVertices[vertex] = true;
+
+        for (int i = 0; i < adjacencyMatrix.getNumberOfVertices(); i++) {
+            if (!visitedVertices[i] && adjacencyMatrix.getAdjacencyMatrix()[vertex][i] != 0) {
+                executeDFS(i, adjacencyMatrix, visitedVertices);                
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -86,5 +101,7 @@ public class DFS {
         adjacencyMatrix.addEdge(1, 4);
         adjacencyMatrix.addEdge(3, 4);
         dfs.executeDFS(0, adjacencyMatrix);
+        visitedVertices = new boolean[adjacencyMatrix.getNumberOfVertices()];
+        dfs.executeDFS(0, adjacencyMatrix, visitedVertices);
     }
 }
