@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Queue;
 
-public class BFS {
+public class BFSAdjacencyList {
 
     public void executeBFS(int startVertex, int vertex, List<List<Integer>> adjacencyList) {
         boolean[] visitedVertices = new boolean[vertex];
@@ -49,7 +49,7 @@ public class BFS {
             adjList.get(edge[0]).add(edge[1]);
         }
 
-        BFS bfs = new BFS();
+        BFSAdjacencyList bfs = new BFSAdjacencyList();
         bfs.executeBFS(0, 6, adjList);
     }
 }
