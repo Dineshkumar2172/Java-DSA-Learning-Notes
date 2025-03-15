@@ -24,6 +24,20 @@ public class DFSAdjacencyList {
                 }
             }
         }
+
+        System.out.println();
+    }
+
+    public void executeDFSAdjacencyList(int vertex, int startVertex, List<List<Integer>> adjList, boolean[] isVisited) {
+        if (isVisited[startVertex]) return;
+        
+        System.out.print(startVertex + ", ");
+        isVisited[startVertex] = true;
+        for (int neighbor: adjList.get(startVertex)) {
+            if (!isVisited[neighbor]) {
+                executeDFSAdjacencyList(vertex, neighbor, adjList, isVisited);
+            }
+        }
     }
 
     public static void main(String[] args) {
@@ -43,5 +57,8 @@ public class DFSAdjacencyList {
         for (int[] edge: edges) adjList.get(edge[0]).add(edge[1]);
         DFSAdjacencyList dfsAdjacencyList = new DFSAdjacencyList();
         dfsAdjacencyList.executeDFSAdjacencyList(v, 0, adjList);
+
+        boolean[] isVisited = new boolean[v];
+        dfsAdjacencyList.executeDFSAdjacencyList(v, 0, adjList, isVisited);
     }
 }
