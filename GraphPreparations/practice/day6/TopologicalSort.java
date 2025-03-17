@@ -22,7 +22,7 @@ public class TopologicalSort {
         stack.push(srcVertex);
     }
 
-    // BFS implementation using queue and inDegree
+    // BFS implementation using queue and inDegree - Khans
     public void executeTopologicalSort(List<List<Integer>> adjList) {
         Integer[] inDegree = new Integer[adjList.size()];
         Arrays.fill(inDegree, 0);
