@@ -8,9 +8,7 @@ import java.util.Queue;
 
 public class CycleDetection {
 
-    // cycle detection directed dfs
-    // cycle detection undirected bfs
-    // cycle detection undirected dfs
+    // works well for finding cycle in undirected graph
     public boolean dfsCycle(boolean[] visitedVertices, int vertex, int parent, List<List<Integer>> adjList) {
         visitedVertices[vertex] = true;
 
@@ -38,6 +36,7 @@ public class CycleDetection {
         return false;
     }
 
+    // works well for finding cycle in directed graph
     public boolean executeBFSCycleDetection(List<List<Integer>> adjList) {
         int n = adjList.size();
         Integer[] inDegree = new Integer[n];
@@ -62,7 +61,7 @@ public class CycleDetection {
             }
         }
 
-        // if the indegree edges are more than actual edges, then there is a cycle.
+        // If the number of processed nodes is less than the total nodes, a cycle exists.
         return totalEdges != n;
 
     }
@@ -81,7 +80,7 @@ public class CycleDetection {
         }
 
         CycleDetection cycleDetection = new CycleDetection();
-        System.out.println(cycleDetection.executeDFSCycleDetection(adjList));
-        System.out.println(cycleDetection.executeBFSCycleDetection(adjList));
+        System.out.println(cycleDetection.executeDFSCycleDetection(adjList)); // undirected
+        System.out.println(cycleDetection.executeBFSCycleDetection(adjList)); // directed
     }
 }
