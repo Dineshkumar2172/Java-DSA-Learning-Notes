@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Queue;
 import java.util.Stack;
 
 public class LeetCode {
@@ -139,6 +141,63 @@ public class LeetCode {
         }
 
         return new ArrayList<>(map.values());
+    }
+
+    // number of islands
+    public void bfsSearch(
+        boolean[][] visited, char[][] grid, 
+        int i, int j, int rows, int cols) {
+
+            Queue<Integer[]> queue = new LinkedList<>();
+            queue.offer(new Integer[]{i, j});
+            visited[i][j] = true;
+
+            while (!queue.isEmpty()) {
+                Integer[] current = queue.poll();
+                int r = current[0], c = current[1];
+
+                // checking above element
+                if (r > 0 && grid[r-1][c] == '1' && !visited[r-1][c]) {
+                    visited[r-1][c] = true;
+                    queue.offer(new Integer[]{r-1,c});
+                }
+
+                // checking below element
+                if (r < rows-1 && grid[r+1][c] == '1' && !visited[r+1][c]) {
+                    visited[r+1][c] = true;
+                    queue.offer(new Integer[]{r+1, c});
+                }
+
+                // checking left element
+                if (c > 0 && grid[r][c-1] == '1' && !visited[r][c-1]) {
+                    visited[r][c-1] = true;
+                    queue.offer(new Integer[]{r, c-1});
+                }
+
+                // checking right element
+                if (c < cols-1 && grid[r][c+1] == '1' && !visited[r][c+1]) {
+                    visited[r][c+1] = true;
+                    queue.offer(new Integer[]{r, c+1});
+                }
+            }
+    }
+
+    public int numIslands(char[][] grid) {
+        int rows = grid.length;
+        int cols = grid[0].length;
+        boolean[][] visited = new boolean[rows][cols];
+        int result = 0;
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                if (!visited[i][j] && grid[i][j] == '1') {
+                    bfsSearch(visited, grid, i, j, rows, cols);
+                    result++;
+                }
+            }
+        }
+
+        return result;
     }
 
 
