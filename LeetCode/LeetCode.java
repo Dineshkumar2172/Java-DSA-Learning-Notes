@@ -67,6 +67,59 @@ public class LeetCode {
         return new int[]{};
     }
 
+    // palindromic number - Given an integer x, return true if x is a palindrome, and false otherwise.
+    public boolean isPalindrome(int x) {
+        // x cannot be palindrome if its negative
+        if (x < 0) return false;
+
+        int temp = x;
+        int reversed = 0;
+        while (temp != 0) {
+            int digit = temp%10;
+            reversed = reversed * 10 + digit;
+            temp /= 10;
+        }
+
+        return x == reversed;
+    }
+
+    // roman to integer - Roman numerals are represented by seven different symbols: I, V, X, L, C, D and M.
+    public int romanToInt(String s) {
+        Map<Character, Integer> romanMap = new HashMap<>(); 
+        romanMap.put('I', 1);
+        romanMap.put('V', 5);
+        romanMap.put('X', 10);
+        romanMap.put('L', 50);
+        romanMap.put('C', 100);
+        romanMap.put('D', 500);
+        romanMap.put('M', 1000);
+
+        int n = s.length();
+        int result = 0;
+        for (int i = 0; i < n; i++) {
+            if(i < n - 1 && romanMap.get(s.charAt(i)) < romanMap.get(s.charAt(i + 1))) {
+                result -= romanMap.get(s.charAt(i));
+            } else {
+                result += romanMap.get(s.charAt(i));
+            }
+        }
+
+        return result;
+    }
+
+    // remove duplicates from sorted array - Given an integer array nums sorted in non-decreasing order, remove the duplicates in-place such that each unique element appears only once. The relative order of the elements should be kept the same. Then return the number of unique elements in nums.
+    public int removeDuplicates(int[] nums) {
+        int index = 1;
+        for (int i = 1; i < nums.length; i++) {
+            if (nums[i] != nums[i-1]) {
+                nums[index] = nums[i];
+                index++;
+            }
+        }
+
+        return index;
+    }
+
     public static void main(String[] args) {
         
     }
