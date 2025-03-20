@@ -39,9 +39,37 @@ public class DFS {
         }
     }
 
-    public void executeDFS (int start, int[][] adjList) {}
+    public void executeDFS (int start, int[][] adjMatrix) {
+        int n = adjMatrix.length;
+        boolean[] visited = new boolean[n];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(start);
 
-    public void executeDFSRecursive (int startVertex, boolean[] visited, int[][] adjList) {}
+        while (!stack.isEmpty()) {
+            int current = stack.pop();
+            System.out.print(current + ", ");
+            visited[current] = true;
+            for (int i = 0; i < n; i++) {
+                if (!visited[i] && adjMatrix[current][i] == 1) {
+                    stack.push(i);
+                } 
+            }
+        }
+
+        System.out.println();
+    }
+
+    public void executeDFSRecursive (int startVertex, boolean[] visited, int[][] adjMatrix) {
+        if (visited[startVertex]) return;
+
+        System.out.print(startVertex + ", ");
+        visited[startVertex] = true;
+        for (int i = 0; i < adjMatrix.length; i++) {
+            if (adjMatrix[startVertex][i] == 1 && !visited[i]) {
+                executeDFSRecursive(i, visited, adjMatrix);
+            }
+        }
+    }
 
     public static void main(String[] args) {
         int v = 6;
