@@ -231,6 +231,22 @@ public class LinkedListPractice {
         // Remove nth node from end
         public void removeNthFromEnd(int n) {
             // Implement logic here
+            Node dummy = new Node(0);
+            dummy.next = head;
+            Node firstPointer = dummy;
+            Node secondPointer = dummy;
+
+            for (int i = 1; i <= n + 1; i++) {
+                firstPointer = firstPointer.next;
+            }
+
+            while (firstPointer != null) {
+                firstPointer = firstPointer.next;
+                secondPointer = secondPointer.next;
+            }
+
+            secondPointer.next = secondPointer.next.next;
+            head = dummy.next;
         }
     
         // Display the linked list
@@ -316,11 +332,10 @@ public class LinkedListPractice {
         mergedList.setHead(mergedList.mergeTwoLists(list1.getHead(), list2.getHead()));
         mergedList.display(); // Expected: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> NULL
 
-        
-        // // Remove Nth node from end
-        // System.out.println("\nRemoving 2nd node from end:");
-        // list.removeNthFromEnd(2);
-        // list.display(); // Expected output after removing the correct node
+        // Remove Nth node from end
+        System.out.println("\nRemoving 2nd node from end:");
+        list.removeNthFromEnd(2);
+        list.display(); // Expected output after removing the correct node
     }
 }
 
