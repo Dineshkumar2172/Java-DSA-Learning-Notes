@@ -149,7 +149,14 @@ public class LinkedListPractice {
         // Find the middle node
         public Node findMiddle() {
             // Implement logic here
-            return null;
+            Node slowPointer = head;
+            Node fastPointer = head;
+            while (fastPointer != null && fastPointer.next != null) {
+                slowPointer = slowPointer.next;
+                fastPointer = fastPointer.next.next;
+            }
+
+            return slowPointer;
         }
     
         // Detect cycle
@@ -222,11 +229,11 @@ public class LinkedListPractice {
         System.out.println("Searching for 7: " + list.search(7)); // Expected: false
 
         // Find the middle node
-        // System.out.println("\nFinding middle node:");
-        // Node middleNode = list.findMiddle();
-        // if (middleNode != null) {
-        //     System.out.println("Middle Node: " + middleNode.data);
-        // }
+        System.out.println("\nFinding middle node:");
+        Node middleNode = list.findMiddle();
+        if (middleNode != null) {
+            System.out.println("Middle Node: " + middleNode.data);
+        }
 
         // Reverse the list
         System.out.println("\nReversing the linked list:");
