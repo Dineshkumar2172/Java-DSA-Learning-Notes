@@ -161,6 +161,19 @@ public class LinkedListPractice {
     
         // Detect cycle
         public boolean hasCycle() {
+            if (head == null) {
+                System.out.println("list is empty");
+            }
+
+            Node fastPointer = head;
+            Node slowPointer = head;
+            while (fastPointer != null && fastPointer.next != null) {
+                slowPointer = slowPointer.next;
+                fastPointer = fastPointer.next.next;
+
+                if (slowPointer == fastPointer) return true;
+            }
+
             // Implement logic here
             return false;
         }
@@ -240,8 +253,8 @@ public class LinkedListPractice {
         list.reverse();
         list.display(); // Expected: 5 -> 4 -> 2 -> 10 -> 1 -> NULL
 
-        // // Detect cycle (Initially, there should be no cycle)
-        // System.out.println("\nChecking for cycle: " + list.hasCycle()); // Expected: false
+        // Detect cycle (Initially, there should be no cycle)
+        System.out.println("\nChecking for cycle: " + list.hasCycle()); // Expected: false
 
         // // Creating two sorted lists for merging
         // SinglyLinkedList list1 = new SinglyLinkedList();
