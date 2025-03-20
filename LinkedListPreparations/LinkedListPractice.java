@@ -1,5 +1,8 @@
 package LinkedListPreparations;
 
+import java.util.Comparator;
+import java.util.PriorityQueue;
+
 public class LinkedListPractice {
 
     static class Node {
@@ -181,7 +184,48 @@ public class LinkedListPractice {
         // Merge two sorted lists
         public Node mergeTwoLists(Node l1, Node l2) {
             // Implement logic here
-            return null;
+            Node dummy = new Node(-1);
+            Node tail = dummy;
+
+            while (l1 != null && l2 != null) {
+                if (l1.data < l2.data) {
+                    tail.next = l1;
+                    l1 = l1.next;
+                } else {
+                    tail.next = l2;
+                    l2 = l2.next;
+                }
+
+                tail = tail.next;
+            }
+
+            if (l1 != null) tail.next = l1;
+            if (l2 != null) tail.next = l2;
+            return dummy.next;
+        }
+
+        public Node mergeKLists(Node[] lists) {
+            if (lists != null || lists.length == 0) return null;
+
+            PriorityQueue<Node> minHeap = new PriorityQueue<>(Comparator.comparing(node -> node.data));
+
+            for (Node node: lists) {
+                if (node != null) {
+                    minHeap.offer(node);
+                }
+            }
+
+            Node dummy = new Node(-1);
+            Node tail = dummy; // it will keep track of the tail
+            while (!minHeap.isEmpty()) {
+                Node smallest = minHeap.poll();
+                tail.next = smallest;
+                tail = tail.next;
+
+                if (smallest.next != null) minHeap.add(smallest.next);
+            }
+
+            return tail.next; // since first one is a dummy node.
         }
     
         // Remove nth node from end
@@ -256,22 +300,23 @@ public class LinkedListPractice {
         // Detect cycle (Initially, there should be no cycle)
         System.out.println("\nChecking for cycle: " + list.hasCycle()); // Expected: false
 
-        // // Creating two sorted lists for merging
-        // SinglyLinkedList list1 = new SinglyLinkedList();
-        // list1.insert(1);
-        // list1.insert(3);
-        // list1.insert(5);
+        // Creating two sorted lists for merging
+        SinglyLinkedList list1 = new SinglyLinkedList();
+        list1.insert(1);
+        list1.insert(3);
+        list1.insert(5);
 
-        // SinglyLinkedList list2 = new SinglyLinkedList();
-        // list2.insert(2);
-        // list2.insert(4);
-        // list2.insert(6);
+        SinglyLinkedList list2 = new SinglyLinkedList();
+        list2.insert(2);
+        list2.insert(4);
+        list2.insert(6);
 
-        // System.out.println("\nMerging two sorted lists:");
-        // SinglyLinkedList mergedList = new SinglyLinkedList();
-        // mergedList.setHead(mergedList.mergeTwoLists(list1.getHead(), list2.getHead()));
-        // mergedList.display(); // Expected: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> NULL
+        System.out.println("\nMerging two sorted lists:");
+        SinglyLinkedList mergedList = new SinglyLinkedList();
+        mergedList.setHead(mergedList.mergeTwoLists(list1.getHead(), list2.getHead()));
+        mergedList.display(); // Expected: 1 -> 2 -> 3 -> 4 -> 5 -> 6 -> NULL
 
+        
         // // Remove Nth node from end
         // System.out.println("\nRemoving 2nd node from end:");
         // list.removeNthFromEnd(2);
