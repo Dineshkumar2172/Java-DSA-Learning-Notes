@@ -2,9 +2,39 @@ package GraphPreparations.practice.day7;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 
 public class DFS {
-    int v = 6;
+
+    public void executeDFS (int start, List<List<Integer>>  adjList) {
+        int n = adjList.size();
+        boolean[] visitedVertex = new boolean[n];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(start);
+
+        while (!stack.isEmpty()) {
+            int current = stack.pop();
+            System.out.print(current + ", ");
+            visitedVertex[current] = true;
+
+            for (Integer neighbor: adjList.get(current)) {
+                if (!visitedVertex[neighbor]) {
+                    stack.push(neighbor);
+                }
+            }
+        }
+
+        System.out.println();
+    }
+
+    public void executeDFSRecursive (int startVertex, boolean[] visited, List<List<Integer>>  adjList) {}
+
+    public void executeDFS (int start, int[][] adjList) {}
+
+    public void executeDFSRecursive (int startVertex, boolean[] visited, int[][] adjList) {}
+
+    public static void main(String[] args) {
+        int v = 6;
         int[][] edges = {
             {0, 1}, {0, 2}, {1, 3}, {1, 4}, {2, 4}, {3, 5}, {4, 5}
         };
@@ -36,4 +66,5 @@ public class DFS {
         // adjacency matrix - dfs recursive
         boolean[] visitedVertex = new boolean[v];
         dfs.executeDFSRecursive(0, visitedVertex, adjMatrix);
+    }
 }
