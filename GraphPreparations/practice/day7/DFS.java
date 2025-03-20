@@ -27,7 +27,17 @@ public class DFS {
         System.out.println();
     }
 
-    public void executeDFSRecursive (int startVertex, boolean[] visited, List<List<Integer>>  adjList) {}
+    public void executeDFSRecursive (int startVertex, boolean[] visited, List<List<Integer>> adjList) {
+        if (visited[startVertex]) return;
+
+        System.out.print(startVertex + ", ");
+        visited[startVertex] = true;
+        for (Integer neigh: adjList.get(startVertex)) {
+            if (!visited[neigh]) {
+                executeDFSRecursive(neigh, visited, adjList);
+            }
+        }
+    }
 
     public void executeDFS (int start, int[][] adjList) {}
 
