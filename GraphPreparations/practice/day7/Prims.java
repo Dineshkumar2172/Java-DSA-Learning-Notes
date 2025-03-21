@@ -12,7 +12,7 @@ public class Prims {
 
         Arrays.fill(minEdgeWeights, Integer.MAX_VALUE);
         // starting from 0th vertex
-        parent[01] = -1;
+        parent[0] = -1;
         minEdgeWeights[0] = 0;
 
         PriorityQueue<Integer[]> pq = new PriorityQueue<>(Comparator.comparing(edge -> edge[1]));
