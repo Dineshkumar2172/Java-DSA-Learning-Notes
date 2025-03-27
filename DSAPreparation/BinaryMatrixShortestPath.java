@@ -132,4 +132,45 @@ public class BinaryMatrixShortestPath {
 
         return -1;
     }
+
+    // optimised approach
+    private int[][] dir = new int[][]{{0, 1}, {0, -1}, {1, 0}, {1, -1}, {1, 1}, {-1, 0}, {-1,-1}, {-1, 1}};
+
+    public int shortestPathBinaryMatrixOptimised(int[][] grid) {
+        int n = grid.length;
+        
+        // return -1 if the start and end are already blocked
+        if (grid[0][0] == 1 || grid[n-1][n-1] == 1) return -1;
+
+        boolean[][] visited = new boolean[n][n];
+        Queue<Integer[]> queue = new LinkedList<>();
+        queue.offer(new Integer[]{0, 0});
+        visited[0][0] = true;
+
+        int minimumSteps = 0;
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                Integer[] current = queue.poll();
+                int row = current[0], col = current[1];
+                if (row == n-1 && col == n-1) return ++minimumSteps;
+
+                for (int k = 0; k < 8; k++) {
+                    int nextX = dir[k][0] + row;
+                    int nextY = dir[k][1] + col;
+
+                    if (nextX >= 0 && nextX < n && nextY >= 0 && nextY < n) {
+                        if (!visited[nextX][nextY] && grid[nextX][nextY] == 0) {
+                            queue.offer(new Integer[]{nextX, nextY});
+                            visited[nextX][nextY] = true;
+                        }
+                    }
+                }
+            }
+
+            minimumSteps++;
+        }
+
+        return -1;
+    }
 }
