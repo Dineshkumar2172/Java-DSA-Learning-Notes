@@ -3,7 +3,7 @@ package DynamicProgramming;
 public class StriverRe4 {
     // 1. function reverse an integer
     public static void reverseArray(int[] arr, int l, int r) {
-        // Time complexity - 0(n) - we are calling same function n times
+        // Time complexity -  0(log n) - we are calling same function n/2 times
         // Space complexity - 0(n)- there will be n new stacks created.
         if (l >= r) return;
 
@@ -21,7 +21,7 @@ public class StriverRe4 {
     // return true - if given input is a palindrome
     // return false - if given input is not a palindrome
     public static boolean isPalindrome(int left, int right, String word) {
-        // Time complexity - 0(n) - we are calling same function n times
+        // Time complexity - 0(log n) - we are calling same function n/2 times
         // Space complexity - 0(n)- there will be n new stacks created.
         if (left >= right) return true;
         if (word.charAt(left) != word.charAt(right)) return false;
@@ -39,6 +39,5 @@ public class StriverRe4 {
         String word = "ranoonar";
         // String word = "mnsenm";
         System.out.println(isPalindrome(0, word.length() - 1, word));
-
     }
 }
