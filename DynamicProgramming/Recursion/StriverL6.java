@@ -15,10 +15,10 @@ public class StriverL6 {
            return;
         }
         
-        curr.add(nums[idx]);
+        curr.add(nums[idx]); // take
         findSubsequence(idx+1, nums, curr);
 
-        curr.remove(curr.size() - 1);
+        curr.remove(curr.size() - 1); // don't take
         findSubsequence(idx+1, nums, curr);
     }
 
