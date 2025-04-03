@@ -5,6 +5,9 @@ import java.util.List;
 
 public class StriverL7 {
 
+    // Time complexity - 0(2^n) - for every index we have two options (two stacks) to pick it up or not pick it up. 
+    // Space complexity - 0(n) - max stack created at a time is same as number of elements in an array. + also curr array which is 0(n) -> it becomes 0(2n) and 2 is constant so 0(n)
+
     // 1. printing subsequences whose sum is k
     public static void subseqEqualK(int idx, int[] nums, List<Integer> curr, int summ, int k) {
         if (idx >= nums.length) {
@@ -59,7 +62,6 @@ public class StriverL7 {
         summ += nums[idx];
         int left = countSubseqEqualK(idx + 1, nums, curr, summ, k);
         
-
         // not picking
         curr.remove(curr.size() - 1);
         summ -= nums[idx];
