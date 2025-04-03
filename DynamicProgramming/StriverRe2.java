@@ -34,8 +34,9 @@ public class StriverRe2 {
 
     // 3. Print from 1 to n, but using +1 is not allowed (use backtracking)
     public static void print1Restricted(int n) {
+        // Time complexity - 0(n) - we are calling same function n times
+        // Space complexity - 0(n)- there will be n new stacks created.
         if (n < 1) return;
-        
         
         print1Restricted(n - 1);
         System.out.println(n);
@@ -47,6 +48,8 @@ public class StriverRe2 {
         printNReverse(5);
 
         // backtracking
+        // we can print i in linear order even while starting from 5
+        // we don't necessarily have to start from 1 and print it to print in linear order.
         print1Restricted(5);
     }
 }
