@@ -14,12 +14,16 @@ public class DynamicProgramming {
     // what is memoization? we make use of dp array to store intermediate results instead of recalculating it again and again.
 
     public static int getFibonacciN(int n) {
+        // Time complexity - O(2^n)
+        // Space complexity - O(N) - there will be maximum of n stacks at a time.
         if (n <= 1) return 1;
         return getFibonacciN(n-1) + getFibonacciN(n-2);
     }
 
     // converted fibonacci to DP solution - used dp array for memoization to prevent recomputing same data again and again.
     public static int getFibonacciDynamic(int n, int[] dp) {
+        // Time complexity - O(n)
+        // Space complexity - O(N) for stack + 0(N) for array
         if (n <= 1) return n;
 
         if (dp[n] != 0) return dp[n];
