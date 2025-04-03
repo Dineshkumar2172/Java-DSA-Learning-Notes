@@ -15,10 +15,12 @@ public class StriverL6 {
            return;
         }
         
-        curr.add(nums[idx]); // take
+        // take the particular index into the subsequence
+        curr.add(nums[idx]);
         findSubsequence(idx+1, nums, curr);
 
-        curr.remove(curr.size() - 1); // don't take
+        // not take condition, this element is not added to your subsequence
+        curr.remove(curr.size() - 1);
         findSubsequence(idx+1, nums, curr);
     }
 
