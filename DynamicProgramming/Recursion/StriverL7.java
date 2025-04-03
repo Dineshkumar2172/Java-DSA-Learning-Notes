@@ -47,10 +47,33 @@ public class StriverL7 {
         return false;
     }
 
+    // 3. Count all subsequence with sum = k; 
+    public static int countSubseqEqualK(int idx, int[] nums, List<Integer> curr, int summ, int k) {
+        if (idx >= nums.length) {
+            if (summ == k) return 1;
+            return 0;
+        }
+
+        // picking
+        curr.add(nums[idx]);
+        summ += nums[idx];
+        int left = countSubseqEqualK(idx + 1, nums, curr, summ, k);
+        
+
+        // not picking
+        curr.remove(curr.size() - 1);
+        summ -= nums[idx];
+        int right = countSubseqEqualK(idx + 1, nums, curr, summ, k);
+
+        return left + right;
+    }
+
     public static void main(String[] args) {
         int[] input = {1, 2, 1};
         subseqEqualK(0, input, new ArrayList<>(), 0, 2);
         System.out.println("Finding only one answer : ");
         singleSubseqEqualK(0, input, new ArrayList<>(), 0, 2);
+        System.out.println("Counting number of subsequence equal to k : ");
+        System.out.println(countSubseqEqualK(0, input, new ArrayList<>(), 0, 2));
     }
 }
