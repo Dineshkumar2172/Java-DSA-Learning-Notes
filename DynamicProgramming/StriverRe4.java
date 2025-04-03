@@ -16,7 +16,6 @@ public class StriverRe4 {
     // can also implement the same function using single pointer
     // tradeoff is we need to calculate the corresponding pointer ourselves using n - i - 1 with base condition i < n/2.
 
-
     // 2. String is a palindrome of not.
     // return true - if given input is a palindrome
     // return false - if given input is not a palindrome
