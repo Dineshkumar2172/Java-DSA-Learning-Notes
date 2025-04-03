@@ -11,3 +11,18 @@ void func(i) {
 }
 
 infinite recursion will happen creating infinite number of stack and run of out memory - stack overflow.
+
+
+So, we need to keep so condition in place - based on which recursion call stops getting executed - base condition
+
+assume we added base condition
+
+void func(int n) {
+    if (n <= 12) return;
+
+    sout(n);
+    func(n + 1);
+}
+
+
+the above function will print until 12 from the given number and stop executing once it reaches 12.
