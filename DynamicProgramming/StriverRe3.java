@@ -10,6 +10,8 @@ public class StriverRe3 {
     
     // 1. Summation of first n numbers - parameterised construction
     public static void firstNNumbers(int n, int summ) {
+        // Time complexity - 0(n) - we are calling same function n times
+        // Space complexity - 0(n)- there will be n new stacks created.
         if (n <= 0) {
             System.out.println(summ);
             return;
@@ -29,6 +31,8 @@ public class StriverRe3 {
     //
     // f(0) - base case hit ==> return
     public static int firstNNumbers(int n) {
+        // Time complexity - 0(n) - we are calling same function n times
+        // Space complexity - 0(n)- there will be n new stacks created.
         if (n < 1) return 0;
 
         return n + firstNNumbers(n - 1);
@@ -36,6 +40,8 @@ public class StriverRe3 {
 
     // 3. Factorial of n - (factorial of 5 = 5 * 4 * 3 * 2 * 1)
     public static int factorialOfN(int n) {
+        // Time complexity - 0(n) - we are calling same function n times
+        // Space complexity - 0(n)- there will be n new stacks created.
         if (n == 0) return 1;
         
         return n * factorialOfN(n - 1);
@@ -43,6 +49,8 @@ public class StriverRe3 {
 
     // using parameterised recursion
     public static void factorialOfN(int n, int curr) {
+        // Time complexity - 0(n) - we are calling same function n times
+        // Space complexity - 0(n)- there will be n new stacks created.
         if (n == 0) {
             System.out.println(curr);
             return;
