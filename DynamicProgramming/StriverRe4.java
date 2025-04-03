@@ -11,6 +11,10 @@ public class StriverRe4 {
         reverseArray(arr, l+1, r-1);
     }
 
+    // can also implement the same function using single pointer
+    // tradeoff is we need to calculate the corresponding pointer ourselves using n - i - 1.
+
+
     public static void main(String[] args) {
         int[] arr = {1, 2, 3, 4, 5, 6};
         reverseArray(arr, 0, arr.length - 1);
