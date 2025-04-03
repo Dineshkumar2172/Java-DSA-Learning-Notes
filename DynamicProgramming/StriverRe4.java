@@ -12,7 +12,7 @@ public class StriverRe4 {
     }
 
     // can also implement the same function using single pointer
-    // tradeoff is we need to calculate the corresponding pointer ourselves using n - i - 1.
+    // tradeoff is we need to calculate the corresponding pointer ourselves using n - i - 1 with base condition i < n/2.
 
 
     public static void main(String[] args) {
