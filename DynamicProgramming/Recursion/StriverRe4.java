@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package DynamicProgramming.Recursion;
 
 public class StriverRe4 {
     // 1. function reverse an integer

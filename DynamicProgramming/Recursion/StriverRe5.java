@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package DynamicProgramming.Recursion;
 
 public class StriverRe5 {
     // reference: https://youtu.be/kvRjNm4rVBE?list=PLgUwDviBIf0rGlzIn_7rsaR2FQ5e6ZOL9

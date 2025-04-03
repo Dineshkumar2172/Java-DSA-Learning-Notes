@@ -1,4 +1,4 @@
-package DynamicProgramming;
+package DynamicProgramming.Recursion;
 
 public class StriverRe2 {
 
