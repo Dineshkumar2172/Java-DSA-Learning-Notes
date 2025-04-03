@@ -14,12 +14,12 @@ public class StriverL6 {
            System.out.println(curr.toString());
            return;
         }
+        
+        curr.add(nums[idx]);
+        findSubsequence(idx+1, nums, curr);
 
-        for (int i = idx + 1; i < nums.length; i++) {
-            curr.add(nums[idx]); // take
-            findSubsequence(i + 1, nums, curr);
-            curr.remove(curr.size() - 1); // not - take
-        }
+        curr.remove(curr.size() - 1);
+        findSubsequence(idx+1, nums, curr);
     }
 
      
