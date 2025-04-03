@@ -22,9 +22,20 @@ public class StriverRe2 {
         printLinearN(i+1, n);
     }
 
+    // 2. Print linearly in reverse order n to 1
+    public static void printNReverse(int i) {
+        // Time complexity - 0(n) - we are calling same function n times
+        // Space complexity - 0(n)- there will be n new stacks created.
+        if (i <= 0) return;
+
+        System.out.println(i);
+        printNReverse(i - 1);
+    }
+
     public static void main(String[] args) {
         printName("Dinesh", 0, 5);
         printLinearN(1, 5);
+        printNReverse(5);
     }
 }
 
