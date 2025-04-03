@@ -34,8 +34,28 @@ public class StriverRe3 {
         return n + firstNNumbers(n - 1);
     }
 
+    // 3. Factorial of n - (factorial of 5 = 5 * 4 * 3 * 2 * 1)
+    public static int factorialOfN(int n) {
+        if (n == 0) return 1;
+        
+        return n * factorialOfN(n - 1);
+    }
+
+    // using parameterised recursion
+    public static void factorialOfN(int n, int curr) {
+        if (n == 0) {
+            System.out.println(curr);
+            return;
+        }
+
+        curr *= n;
+        factorialOfN(n-1, curr);
+    }
+
     public static void main(String[] args) {
         firstNNumbers(5, 0); // parameterised recursion - we passed state from one stack to another as parameter
         System.out.println(firstNNumbers(5)); // functional recursion - where instead of passing some state as parameters, we make function to return something.
+        System.out.println(factorialOfN(5)); // using functional recursion
+        factorialOfN(5, 1);
     }
 }
