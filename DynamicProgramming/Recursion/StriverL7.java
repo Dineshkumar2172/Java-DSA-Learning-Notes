@@ -12,12 +12,14 @@ public class StriverL7 {
             return;
         }
 
+        // pick
         curr.add(nums[idx]);
         summ += nums[idx];
         subseqEqualK(idx+1, nums, curr, summ, k);
+
+        // not pick
         curr.remove(curr.size() - 1);
         summ -= nums[idx];
-
         subseqEqualK(idx+1, nums, curr, summ, k);
     }
 
