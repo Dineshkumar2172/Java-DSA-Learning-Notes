@@ -14,3 +14,6 @@ public class StriverRe2 {
         printName("Dinesh", 0, 5);
     }
 }
+
+// Time complexity - 0(n) - we are calling same function n times
+// Space complexity - 0(n)- there will be n new stacks created.
