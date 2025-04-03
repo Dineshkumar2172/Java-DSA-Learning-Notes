@@ -10,6 +10,8 @@ public class StriverL6 {
     // 1. Print all subsequences - (a contiguous / non-contiguous sequences which follows the order)
     // For a note: a subarray is contiguous, but a subsequence can be contiguous or non-contiguous
     public static void findSubsequence(int idx, int[] nums, List<Integer> curr) {
+        // Time complexity: O(2^n) - we have exactly two options for every element in n
+        // Space complexity: O(n) - we create exactly n frame for each recursion, in this function not more than 3 recursion will be waiting in recursive call.
         if (idx >= nums.length) {
            System.out.println(curr.toString());
            return;
