@@ -1,2 +1,13 @@
 
-what is recursion? when a function calls itself until a specified condition is met.
+what is recursion? when a function calls itself, until a specified condition is met.
+
+
+assume we have function like below
+
+
+void func(i) {
+    sout(i);
+    func(i+1);
+}
+
+infinite recursion will happen creating infinite number of stack and run of out memory - stack overflow.
