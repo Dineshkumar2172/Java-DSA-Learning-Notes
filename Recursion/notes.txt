@@ -1,6 +1,8 @@
+######################################## RECURSION ########################################
 
 what is recursion? when a function calls itself, until a specified condition is met.
 
+######################################## STACK OVERFLOW ########################################
 
 assume we have function like below
 
@@ -13,6 +15,8 @@ void func(i) {
 infinite recursion will happen creating infinite number of stack and run of out memory - stack overflow.
 
 
+######################################## BASE CONDTION ########################################
+
 So, we need to keep so condition in place - based on which recursion call stops getting executed - base condition
 
 assume we added base condition
@@ -24,5 +28,19 @@ void func(int n) {
     func(n + 1);
 }
 
-
 the above function will print until 12 from the given number and stop executing once it reaches 12.
+
+######################################## CALL STACK TRACKING ########################################
+
+Once a new stack frame meets the condition, its goes back or returns the output to the place it called fro.
+
+Now, when a function calls itself, it creating a new stack based on different input. Once the base condition is met,
+
+it goes back to the previous stack where the new stack created from. and start executing further codes after that.
+
+
+######################################## RECURSION TREE ########################################
+
+when we call a function within itself, it crates a new stack connected to it until base condition is met.
+
+Each stack will be connected with it's previous one's making it look like a tree.
