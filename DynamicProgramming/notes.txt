@@ -1,0 +1,7 @@
+What is dynamic programming? Those who cannot remember the past are condemned to repeat it.
+
+There are two ways to solve it:
+    1. Tabulation - bottom up dynamic programming
+    2. Memoiation - top down dynamic programming 
+
+
