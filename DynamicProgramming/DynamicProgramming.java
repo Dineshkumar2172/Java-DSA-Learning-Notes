@@ -11,9 +11,22 @@ public class DynamicProgramming {
     // For example: in the below finbonacci function, assume we are calculating fibonacci of 8, here we perform f(2) and others multiple times within it.
     // why to calculate again if we already have calculated it? This is where memoization comes in - we tend to store the values of sub problems in some map/table.
 
+    // what is memoization? we make use of dp array to store intermediate results instead of recalculating it again and again.
+
     public static int getFibonacciN(int n) {
         if (n <= 1) return 1;
         return getFibonacciN(n-1) + getFibonacciN(n-2);
+    }
+
+    // converted fibonacci to DP solution - used dp array for memoization to prevent recomputing same data again and again.
+    public static int getFibonacciDynamic(int n, int[] dp) {
+        if (n <= 1) return n;
+
+        if (dp[n] != 0) return dp[n];
+
+        dp[n] = getFibonacciDynamic(n - 1, dp) + getFibonacciDynamic(n - 2, dp);
+
+        return dp[n];
     }
 
     // public static int getFibonacciN(int n) {
@@ -24,6 +37,10 @@ public class DynamicProgramming {
     // }
 
     public static void main(String[] args) {
-        System.out.println(getFibonacciN(5));
+        int n = 6;
+        System.out.println(getFibonacciN(n));
+
+        int[] dp = new int[n + 1];
+        System.out.println(getFibonacciDynamic(n, dp));
     }
 }
