@@ -72,5 +72,17 @@ public class DynamicProgramming {
             previousFirst = previousSecond;
             previousSecond = currentElement;
         }
+
+
+        // We an solve any recursion problem using below shortcut, if we can solve recursion, we can use memoize it to convert it to DP.
+        // then we can tabulize and optimise it.
+        // ******************************* SHORTCUT FOR DP *******************************/
+        // 1. Try to represent the problem in terms of index.
+        // 2. Do all possible stuffs on that index according to the problem statement.
+        // 3. If question says:
+        //      i) count all ways - sum of all stuffs
+        //     ii) find minimum - min(of all stuffs)
+        //    iii) find maximum - max(of all stuffs)
+        // *******************************************************************************/
     }
 }
