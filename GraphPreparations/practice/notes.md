@@ -18,6 +18,7 @@ This document provides a comparison of common graph algorithms based on their ap
 | **Topological Sort**              | ✅ Yes       | ❌ No          | ❌ Not weight-based   | ❌ Not weight-based   | ❌ No (DAG only)             | ❌ No                        | Task scheduling, **DAG traversal**, prerequisites |  `O(V + E)` |
 | **Tarjan’s SCC / Kosaraju’s**     | ✅ Yes       | ❌ No          | ❌ Not weight-based   | ❌ Not weight-based   | ✅ Yes                        | ✅ Yes                        | Finding **Strongly Connected Components** |  `O(V + E)` |
 | **Johnson’s Algorithm**           | ✅ Yes       | ❌ Rare        | ✅ Yes               | ✅ Yes               | ✅ Yes                        | ❌ No                        | **All-pairs shortest path** in sparse graphs with negative weights but **no negative cycles** |  `O(V² log V + VE)` |
+| **Disjoint Set (Union-Find)** | ❌ No | ✅ Yes | ❌ Not applicable | ❌ Not applicable | ✅ (Detects any cycle, not weight based) | ✅ (Detects any cycle, not weight based) | Efficiently determine if two elements are in the same subset (e.g., cycle detection, connected components, Kruskal’s MST) | Near constant `O(α(N))` per operation (with path compression + union by rank)
 
 ---
 
