@@ -52,7 +52,7 @@ public class BFS {
     
 
     public static void main(String[] args) {
-               // build the input adjacency matrix / list
+        // build the input adjacency matrix / list
 		// create a object for the BFS and access executeBFS func by keeping
 		// adjacency matrix / list as an input.
         int v = 6;
