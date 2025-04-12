@@ -24,10 +24,24 @@ public class DFSIterative {
         }
     }
 
-
-    public void executeDFSRecursive(int src, List<List<Integer>> adjList) {
-
+    public void executeDFS(int src, int[][] adjMatrix) {
+        boolean[] visited = new boolean[adjMatrix.length];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(src);
+        
+        while(!stack.isEmpty()) {
+            int current = stack.pop();
+            if (visited[current]) continue;
+            System.out.print(current + ", ");
+            visited[current] = true;
+            for (int i = 0; i < adjMatrix.length; i++) {
+                if (adjMatrix[current][i] != 0 && !visited[i]) {
+                    stack.push(i);
+                }
+            }
+        }
     }
+
 
     public static void main(String[] args) {
         int v = 6;
@@ -46,10 +60,13 @@ public class DFSIterative {
 
         // adjacency list - dfs iterative
         dfs.executeDFS(0, adjList);
+        System.out.println();
 
-        // adjacency list - dfs recursive
-        // boolean[] visited = new boolean[v];
-        // dfs.executeDFSRecursive(0, visited, adjList);
+        // adjacency matrix
+        int[][] adjMatrix = new int[v][v];
+        for (int[] edge: edges) adjMatrix[edge[0]][edge[1]] = 1;
+
+        dfs.executeDFS(0, adjMatrix);
         // System.out.println();
     }
 }
