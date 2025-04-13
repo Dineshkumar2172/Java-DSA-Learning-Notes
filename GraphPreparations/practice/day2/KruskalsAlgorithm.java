@@ -99,7 +99,7 @@ public class KruskalsAlgorithm {
         // step 4: access each edge one after another and perform disjoint set operation
         for (Edge edge: edges) {
             // if the edge doesn't form a cycle, then it should be a part of MST
-            if (ds.union(edge.src, edge.weight)) {
+            if (ds.union(edge.src, edge.destination)) {
                 mstEdges.add(edge);
                 mstWeight += edge.weight;
             }
