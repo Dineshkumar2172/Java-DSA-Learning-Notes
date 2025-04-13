@@ -21,8 +21,35 @@ public class BellmanFord {
         }
     }
 
-    public void executeBellmanFord(Integer startVertex, List<Edge> edges) {
-       
+    public void executeBellmanFord(Integer startVertex, List<Edge> edges, int vertex) {
+        Integer[] shortestDistance = new Integer[vertex];
+        Arrays.fill(shortestDistance, Integer.MAX_VALUE);
+        shortestDistance[startVertex] = 0;
+
+        // perform relaxation v -1 times  
+        for (int i = 0; i < vertex - 1; i++) {
+            for (Edge edge: edges) {
+                if (shortestDistance[edge.source] != Integer.MAX_VALUE) {
+                    if (shortestDistance[edge.source] + edge.weight < shortestDistance[edge.destination]) {
+                        shortestDistance[edge.destination] = shortestDistance[edge.source] + edge.weight ;
+                    }
+                }
+            }
+        }
+
+        for (Edge edge: edges) {
+            if (shortestDistance[edge.source] != Integer.MAX_VALUE) {
+                if (shortestDistance[edge.source] + edge.weight < shortestDistance[edge.destination]) {
+                    System.out.println("negative cycle detected");
+                    return;
+                }
+            }
+        }
+
+        System.out.println("Shortest distance from vertex : " + startVertex);
+        for (int i = 0; i < vertex; i++) {
+            System.out.println("To vertex " + i + ": " + shortestDistance[i]);
+        }
     }
 
     public static void main(String[] args) {
@@ -37,7 +64,7 @@ public class BellmanFord {
         edges.add(new Edge(4, 3, -3));
 
         BellmanFord bellmanFord = new BellmanFord();
-        bellmanFord.executeBellmanFord(0, edges);
+        bellmanFord.executeBellmanFord(0, edges, 5);
     }
     
 }
