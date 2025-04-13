@@ -8,11 +8,37 @@ public class DFS {
     // 3. It traverse the graph by visiting single vertex in depth at a time and then come back by visting the unvisited vertices.
     // 4. DFS works irrespective of whether if a graph is directional, undirectional, unweighted.
     public void performDFSIterative(Integer start, AdjacencyList adjacencyList) {
-        
+        int vertex = adjacencyList.getNumberOfVertices();
+        boolean[] visited = new boolean[vertex];
+        Stack<Integer> stack = new Stack<>();
+        stack.push(start);
+
+        while (!stack.isEmpty()) {
+            int current = stack.pop();
+
+            if (visited[current]) continue;
+            System.out.print(current + ", ");
+            visited[current] = true;
+            for (Integer[] neigh: adjacencyList.getAdjacencyList().get(current)) {
+                if (!visited[neigh[0]]) {
+                    stack.push(neigh[0]);
+                }
+            }
+        }
+
+        System.out.println();
     }
 
     public void executeDFSRecursive(Integer vertex, AdjacencyList adjacencyList, boolean[] visitedVertices) {
-        
+        if (visitedVertices[vertex]) return;
+
+        System.out.print(vertex + ". ");
+        visitedVertices[vertex] = true;
+        for (Integer[] neigh: adjacencyList.getAdjacencyList().get(vertex)) {
+            if (!visitedVertices[neigh[0]]) {
+                executeDFSRecursive(neigh[0], adjacencyList, visitedVertices);
+            }
+        }
     }
     
     public static void main(String[] args) {
