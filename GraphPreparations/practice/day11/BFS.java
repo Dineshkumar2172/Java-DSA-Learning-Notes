@@ -12,11 +12,40 @@ public class BFS {
     //  4. It's a neither greedy nor dynamic algorithms - its a graph traversal that helps you traverse through graph.                   
 
     public void executeBFSAdjacencyList(int startVertex, AdjacencyList adjacencyList) {
-       
+        boolean[] visited = new boolean[adjacencyList.getNumberOfVertices()];
+        Queue<Integer> queue = new LinkedList<>();
+        queue.add(startVertex);
+        visited[startVertex] = true;
+
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            System.out.print(current + ", ");
+            for (Integer[] neighbor: adjacencyList.getAdjacencyList().get(current)) {
+                if (!visited[neighbor[0]]) {
+                    queue.add(neighbor[0]);
+                    visited[neighbor[0]] = true;
+                }
+            }
+        }
+        System.out.println();
     }
 
     public void executeBFSAdjacencyMatrix(int startVertex, AdjacencyMatrix adjacencyMatrix) {
+        boolean[] visited = new boolean[adjacencyMatrix.getVertexCount()];
+        Queue<Integer> queue = new LinkedList<>();
+        visited[startVertex] = true;
+        queue.add(startVertex);
 
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            System.out.print(current + ", ");
+            for (int i = 0; i < adjacencyMatrix.getVertexCount(); i++) {
+                if (adjacencyMatrix.getAdjacencyMatrix()[current][i] != 0 && !visited[i]) {
+                    queue.add(i);
+                    visited[i] = true;
+                }
+            }
+        }
     }
 
     public static void main(String[] args) {
