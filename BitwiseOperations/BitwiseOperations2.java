@@ -1,5 +1,7 @@
 package BitwiseOperations;
 
+import com.apple.laf.AquaButtonBorder.Toggle;
+
 public class BitwiseOperations2 {
     /*
      *      AND (&) - returns bit 1 if both corresponding bits are 1
@@ -49,17 +51,13 @@ public class BitwiseOperations2 {
         // it's submasks are -> 00100 (4), 10000 (16), 10100 (20), 00000 (0)
         // in simple terms - submask must always have some or all of the 1 bits from the original bitmask, but it doesn't add any extra 1 bits.
         System.out.println();
-        int submask = 20;
-        int counter = 0;
+        int number = 7;
+        int submask = number;
         while (submask > 0) {
             // it's a submask - portions of 1's or LSB's from bitmask
-            System.out.println(submask);
-            submask -= submask & (-submask);
-            counter++;
+            System.out.println(Integer.toBinaryString(submask));
+            submask = (submask - 1) & number;
         }
-
-        System.out.println(counter);
-        System.out.println(submask);
 
         // find the last set bit
         int bitmask = 6; // (0110) - LST is 0010 - 2
@@ -78,6 +76,12 @@ public class BitwiseOperations2 {
         }
 
         System.out.println("number set bits in a given number 13 : " + count);
+
+        System.out.println(3 << 2);  // 3 * 2^2 = ? - We multiple 3 by 2 two times, hence the output will be 12
+        System.out.println(16 >> 2); // 16 / 2^2 = ? - We divide 16 by 2 two times, henc the output will be 4
+        System.out.println(-2 >>> 1); // What happens to the sign? sign will get removed and return a larger integer number
+
+        // Use Bitmask to Toggle a Bit - Given a number x = 42 → 101010 - Toggle the 1st and 3rd bit (0-indexed from right).
 
      }
 }
