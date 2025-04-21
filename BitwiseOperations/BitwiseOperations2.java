@@ -1,7 +1,5 @@
 package BitwiseOperations;
 
-import com.apple.laf.AquaButtonBorder.Toggle;
-
 public class BitwiseOperations2 {
     /*
      *      AND (&) - returns bit 1 if both corresponding bits are 1
