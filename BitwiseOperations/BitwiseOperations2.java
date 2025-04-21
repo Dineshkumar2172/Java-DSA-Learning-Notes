@@ -81,5 +81,13 @@ public class BitwiseOperations2 {
 
         // Use Bitmask to Toggle a Bit - Given a number x = 42 → 101010 - Toggle the 1st and 3rd bit (0-indexed from right).
 
+
+        /*************************************************** EXERCISE ***************************************************/
+        // 1. Checking if a number is odd or even
+        // Even number: Least significatn bit is 0
+        // Odd number: Least significant bit is 1
+        int checkNum = 10;
+        if ((checkNum & 1) == 1) System.out.println("entered number is odd");
+        else System.out.println("entered number is even");
      }
 }
