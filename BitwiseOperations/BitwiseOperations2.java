@@ -39,5 +39,24 @@ public class BitwiseOperations2 {
             count++;
         }
         System.out.println(count);
+        
+        // BITMASK - A bitmask is a number where certain bits are set (i.e., they are 1), and others may be cleared (i.e., they are 0).
+        // SUBMASK - A submask refers to any number that has some of the bits set to 1 from the original bitmask, and the other bits set to 0.
+        // assume we have a number - 20
+        // it's binary representation or bitmask is 10100
+        // it's submasks are -> 00100 (4), 10000 (16), 10100 (20), 00000 (0)
+        // in simple terms - submask must always have some or all of the 1 bits from the original bitmask, but it doesn't add any extra 1 bits.
+        System.out.println();
+        int submask = 20;
+        int counter = 0;
+        while (submask > 0) {
+            // it's a submask - portions of 1's or LSB's from bitmask
+            System.out.println(submask);
+            submask -= submask & (-submask);
+            counter++;
+        }
+
+        System.out.println(counter);
+        System.out.println(submask);
      }
 }
