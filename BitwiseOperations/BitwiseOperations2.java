@@ -26,6 +26,8 @@ public class BitwiseOperations2 {
         System.out.println(5&3);
         System.out.println(10|6);
         System.out.println(7^12);
+
+
         // expression x & -x - used to get lowest set bit (bits are 0s and 1s - 1s are considered as set bits)
         // example - binary representation of 10 is 1010 - its sequence is calculated from right to left 3,2,1,0 (<---)
         // lowest set but mean the first set bit (1) occurs in a binary representation of a number.
@@ -58,5 +60,24 @@ public class BitwiseOperations2 {
 
         System.out.println(counter);
         System.out.println(submask);
+
+        // find the last set bit
+        int bitmask = 6; // (0110) - LST is 0010 - 2
+        int lastSetBit = bitmask & (-bitmask);
+        System.out.println("last set bit for 6 : " + lastSetBit);
+        bitmask = 40; // (101000) - LSB is 001000 - 8
+        lastSetBit = bitmask & (-bitmask);
+        System.out.println("last set bit for 40 : " + lastSetBit);
+
+        // count set bits in a given integer
+        bitmask = 13; // 1101
+        count = 0;
+        while (bitmask > 0) {
+            bitmask -= (bitmask & -bitmask);
+            count++;
+        }
+
+        System.out.println("number set bits in a given number 13 : " + count);
+
      }
 }
