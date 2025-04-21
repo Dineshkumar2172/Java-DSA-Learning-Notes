@@ -98,5 +98,15 @@ public class BitwiseOperations2 {
             countNum2++;
         }
         System.out.println("number of set bits in a given number is : " + countNum2);
+
+        // 3. Swap two numbers without using temproary variable
+        int swap1 = 5;
+        int swap2 = 10;
+
+        swap1 = swap1^swap2;
+        swap2 = swap1^swap2;
+        swap1 = swap1^swap2;
+
+        System.out.println("after swap swap1 = " + swap1 + ", swap2 = " + swap2);
      }
 }
