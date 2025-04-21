@@ -89,5 +89,14 @@ public class BitwiseOperations2 {
         int checkNum = 10;
         if ((checkNum & 1) == 1) System.out.println("entered number is odd");
         else System.out.println("entered number is even");
+
+        // 2. Counting the number of set bits (1s) in a number
+        int checkNum2 = 29; // 11101 in binary
+        int countNum2 = 0;
+        while (checkNum2 > 0) {
+            checkNum2 -= checkNum2 & -checkNum2;
+            countNum2++;
+        }
+        System.out.println("number of set bits in a given number is : " + countNum2);
      }
 }
