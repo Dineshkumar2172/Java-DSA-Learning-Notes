@@ -17,9 +17,32 @@ public class TopologicalSorting {
     }
 
     public void executeTopologicalSortBFS(AdjacencyList adjacencyList) {
-        
-    }
+        int[] inDegree = new int[adjacencyList.getNumberOfVertices()];
+        for (int i = 0; i < adjacencyList.getNumberOfVertices(); i++) {
+            for (Integer[] connectedVertex: adjacencyList.getAdjacencyList().get(i)) {
+                inDegree[connectedVertex[0]]++;
+            }
+        }
 
+        Queue<Integer> queue = new LinkedList<>();
+        for (int i  = 0; i < adjacencyList.getNumberOfVertices(); i++) {
+            if (inDegree[i] == 0) {
+                queue.add(i);
+            }
+        }
+
+        while (!queue.isEmpty()) {
+            int current = queue.poll();
+            System.out.print(current + " -> ");
+            for (Integer[] connected: adjacencyList.getAdjacencyList().get(current)) {
+                if (--inDegree[connected[0]] == 0) {
+                    queue.add(connected[0]);
+                }
+            }
+        }
+
+        System.out.println();
+    }
 
     public static void main(String[] args) {
         AdjacencyList adjacencyList = new AdjacencyList(6, false, false);
@@ -31,7 +54,7 @@ public class TopologicalSorting {
         adjacencyList.addEdge(3, 1);
 
         TopologicalSorting topoSort = new TopologicalSorting();
-        topoSort.executeTopologicalSortDFS(adjacencyList);
+        // topoSort.executeTopologicalSortDFS(adjacencyList);
         topoSort.executeTopologicalSortBFS(adjacencyList);
     }
 }
