@@ -9,11 +9,33 @@ import java.util.Stack;
 public class TopologicalSorting {
 
     public void dfs(Integer vertex, boolean[] visitedVertices, Stack<Integer> stack, AdjacencyList adjacencyList) {
+        if (visitedVertices[vertex]) return;
         
+        visitedVertices[vertex] = true;
+        for (Integer[] connected: adjacencyList.getAdjacencyList().get(vertex)) {
+            if (!visitedVertices[connected[0]]) {
+                dfs(connected[0], visitedVertices, stack, adjacencyList);
+            }
+        }
+
+        stack.push(vertex);
     }
 
     public void executeTopologicalSortDFS(AdjacencyList adjacencyList) {
-       
+        Stack<Integer> stack = new Stack<>();
+        boolean[] visited = new boolean[adjacencyList.getNumberOfVertices()];
+
+        for (int i = 0; i < adjacencyList.getNumberOfVertices(); i++) {
+            if (!visited[i]) {
+                dfs(i, visited, stack, adjacencyList);
+            }
+        }
+
+        while (!stack.isEmpty()) {
+            System.out.print(stack.pop() + " -> ");
+        }
+
+        System.out.println();
     }
 
     public void executeTopologicalSortBFS(AdjacencyList adjacencyList) {
@@ -54,7 +76,7 @@ public class TopologicalSorting {
         adjacencyList.addEdge(3, 1);
 
         TopologicalSorting topoSort = new TopologicalSorting();
-        // topoSort.executeTopologicalSortDFS(adjacencyList);
+        topoSort.executeTopologicalSortDFS(adjacencyList);
         topoSort.executeTopologicalSortBFS(adjacencyList);
     }
 }
