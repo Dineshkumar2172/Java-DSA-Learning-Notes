@@ -11,7 +11,28 @@ public class DijkstraAlgorithm {
     // It works on positive weighted graph and cycle irrespective of directionality.
     // It doesn't support negative edges, negative weighted cycle.
     public void executeDijkstra(Integer startVertex, AdjacencyList adjacencyList) {
-       
+        Integer[] shortestDistance = new Integer[adjacencyList.getNumberOfVertices()];
+        PriorityQueue<Integer[]> pq = new PriorityQueue<>(Comparator.comparing(edge -> edge[1]));
+        Arrays.fill(shortestDistance, Integer.MAX_VALUE);
+        shortestDistance[startVertex] = 0;
+        pq.offer(new Integer[]{startVertex, 0});
+
+        while (!pq.isEmpty()) {
+            Integer[] current = pq.poll();
+            if (current[1] > shortestDistance[current[0]]) continue;
+            int currentVertex = current[0], currentWeight = current[1];
+            for (Integer[] neighbor: adjacencyList.getAdjacencyList().get(currentVertex)) {
+                int neighborVertex = neighbor[0], neighborWeight = neighbor[1];
+                if (currentWeight + neighborWeight < shortestDistance[neighborVertex]) {
+                    shortestDistance[neighborVertex] = currentWeight + neighborWeight;
+                    pq.offer(new Integer[]{neighborVertex, shortestDistance[neighborVertex]});
+                }
+            }
+        }
+
+        for (int i = 0; i < adjacencyList.getNumberOfVertices(); i++) {
+            System.out.println(i + " - " + shortestDistance[i]);
+        }
     }
 
     public static void main(String[] args) {
